@@ -1,0 +1,33 @@
+[submodule "packages/dotget"]
+	path = packages/dotget
+	url = https://github.com/queelius/dotget.git
+[submodule "packages/dotstar"]
+	path = packages/dotstar
+	url = https://github.com/queelius/dotstar.git
+[submodule "packages/dotmod"]
+	path = packages/dotmod
+	url = https://github.com/queelius/dotmod.git
+[submodule "packages/dotbatch"]
+	path = packages/dotbatch
+	url = https://github.com/queelius/dotbatch.git
+[submodule "packages/dotpipe"]
+	path = packages/dotpipe
+	url = https://github.com/queelius/dotpipe.git
+[submodule "packages/dotquery"]
+	path = packages/dotquery
+	url = https://github.com/queelius/dotquery.git
+[submodule "packages/dotexists"]
+	path = packages/doexists
+	url = https://github.com/queelius/dotexists.git
+[submodule "packages/dotany"]
+	path = packages/dotany
+	url = https://github.com/queelius/dotany.git
+[submodule "packages/dotrelate"]
+	path = packages/dotrelate
+	url = https://github.com/queelius/dotrelate.git
+[submodule "packages/dotselect"]
+	path = packages/dotselect
+	url = https://github.com/queelius/dotselect.git
+[submodule "packages/dotpath"]
+	path = packages/dotpath
+	url = https://github.com/queelius/dotpath.git
