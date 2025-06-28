@@ -17,7 +17,7 @@
 	path = packages/dotquery
 	url = https://github.com/queelius/dotquery.git
 [submodule "packages/dotexists"]
-	path = packages/doexists
+	path = packages/dotexists
 	url = https://github.com/queelius/dotexists.git
 [submodule "packages/dotany"]
 	path = packages/dotany

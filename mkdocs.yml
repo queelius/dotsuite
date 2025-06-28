@@ -1,0 +1,8 @@
+site_name: The Dot Notation Universe
+theme: readthedocs
+
+nav:
+    - 'index.md'
+    - 'getting-started.md'
+    - 'philosophy.md'
+    - 'ecosystem.md'
