@@ -3,8 +3,8 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "dot-suite"
-version = "1.0.0"
+name = "dotsuite"
+version = "0.1.0"
 description = "A meta-package to install the complete dot ecosystem."
 readme = "README.md"
 license = "MIT"
@@ -16,27 +16,11 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-dependencies = [
-    "dotget",
-    "dotstar",
-    "dotmod",
-    "dotbatch",
-    "dotpipe",
-    "dotquery",
-    "dotrelate",
-    "dotpath",
-    "dotselect",
-    "dotexists",
-    "dotany",
-    "dotall"
-]
-
-[project.optional-dependencies]
-dev = [
-    "ruff",
-    "pytest",
-    "mkdocs"
-]
+[project.scripts]
+dotbatch = "dotbatch.cli:main"
+dotquery = "dotquery.cli:main"
+dotrelate = "dotrelate.cli:cli"
+dotall = "dotsall.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/queelius/dot-suite"
+Homepage = "https://github.com/queelius/dotsuite"

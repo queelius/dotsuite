@@ -81,7 +81,7 @@ test:
 
 lint:
 	@echo "Linting all 'dot' packages with ruff..."
-	python -m ruff check packages
+	ruff check packages
 	@echo "Linting complete."
 
 # ==============================================================================
