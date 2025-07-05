@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>The Dot Notation Universe: A Journey in API Design - The Dot Notation Universe</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "The Dot Notation Universe: A Journey in API Design";
+        var mkdocs_page_input_path = "dot-notation-universe.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> The Dot Notation Universe
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Welcome to the Dot Notation Universe</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../philosophy/">The Philosophy of the Dot Universe</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ecosystem/">The dot Ecosystem: A Tour</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">The Dot Notation Universe</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">The Dot Notation Universe: A Journey in API Design</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="the-dot-notation-universe-a-journey-in-api-design">The Dot Notation Universe: A Journey in API Design</h1>
+<p>It always starts with a simple problem. You have a nested dictionary or a JSON payload, and you need to get a value buried deep inside. You write <code>data['user']['contacts'][0]['email']</code> and you pray that no key or index is missing along the way, lest your program crash. This leads to brittle, defensive code.</p>
+<p>The first, obvious solution is a helper function. This is where our story begins. What started as a single, humble function, <code>dotget</code>, evolved through a series of questions and insights into a complete, coherent, and powerful ecosystem for manipulating data structures. This is the story of that evolution—a journey in API design guided by the principles of purity, pedagogy, and the principle of least power.</p>
+<h2 id="part-i-the-single-document-the-three-pillars-of-intelligence">Part I: The Single Document - The Three Pillars of Intelligence</h2>
+<p>Mastering operations <em>inside</em> a single, complex document is the foundation of the entire ecosystem. We discovered that this "per-document intelligence" isn't a single path, but rests on three distinct pillars, each answering a different fundamental question.</p>
+<h3 id="pillar-1-the-addressing-layer-retrieval">Pillar 1: The Addressing Layer (Retrieval)</h3>
+<p>This is the bedrock. It answers the question: <strong>"WHAT is the value at a given location?"</strong> Its tools are designed purely for finding and returning data.</p>
+<ul>
+<li><strong><code>dotget</code> (Exact Addressing):</strong> The starting point. It retrieves a single value from a precise, known path (e.g., <code>"users.0.name"</code>).</li>
+<li><strong><code>dotstar</code> (Pattern Addressing):</strong> Introduces the <code>*</code> wildcard to retrieve multiple values from a structural pattern (e.g., <code>"users.*.name"</code>).</li>
+<li><strong><code>dotquery</code> (Conditional Addressing):</strong> The master addressing engine. It understands a complete path language, including conditional predicates (<code>[key=value]</code>) and descendant wildcards (<code>**</code>), to find and retrieve data from the most complex locations.</li>
+</ul>
+<h3 id="pillar-2-the-logic-layer-assertion">Pillar 2: The Logic Layer (Assertion)</h3>
+<p>Once we can find data, the next question is not about the data's value, but its veracity. This pillar answers the question: <strong>"IS a statement about this document true?"</strong> Its output is always a boolean.</p>
+<ul>
+<li><strong><code>dotexists</code> (Simple Existence):</strong> The simplest logical test. It takes a <code>dotget</code>-style exact path and returns <code>True</code> if it resolves to a value.</li>
+<li><strong><code>dotany</code> / <code>dotall</code> (Quantifiers):</strong> This is the necessary next step for handling paths that return multiple values. It forces the user to be explicit about their intent. <code>dotany</code> checks if <em>at least one</em> returned value meets a condition, while <code>dotall</code> checks if <em>all</em> of them do.</li>
+<li><strong><code>dotlogic</code> (Compositional Logic):</strong> The final stage. This is a full predicate engine that can compose the results of simpler checks using <code>AND</code>, <code>OR</code>, <code>NOT</code>. It can evaluate complex, self-referential assertions, such as checking if two different lists of values within the document have any intersection.</li>
+</ul>
+<h3 id="pillar-3-the-action-layer-manipulation">Pillar 3: The Action Layer (Manipulation)</h3>
+<p>This pillar answers the question: <strong>"HOW should this document be changed?"</strong> It uses the Addressing Layer to find <em>where</em> to act. It is built on the principle of immutability—always returning a modified copy.</p>
+<ul>
+<li><strong>The "Write" Branch (<code>dotmod</code>, <code>dotbatch</code>):</strong> This branch is for direct mutation. <code>dotmod</code> provides the verbs for single changes (<code>set_</code>, <code>delete_</code>), while <code>dotbatch</code> provides the transactional capability to apply a sequence of changes atomically. Its output is the same document, modified (<code>Doc -&gt; Doc</code>).</li>
+<li><strong>The "Transform" Branch (<code>dotmap</code>):</strong> This branch is for reshaping data. It takes a document and derives a new structure from it, such as a simplified "view model" for a UI. Its output can be of any shape (<code>Doc -&gt; Any</code>).</li>
+</ul>
+<h2 id="part-ii-collections-of-documents-a-world-of-breadth">Part II: Collections of Documents - A World of "Breadth"</h2>
+<p>With a complete toolkit for single documents, we can now operate on collections, often represented as a stream of documents like in a <strong>JSONL</strong> file. This "Breadth" axis has two main pillars that use the per-document tools as their internal machinery.</p>
+<h3 id="dotset-a-boolean-algebra-for-collections"><code>dotset</code>: A Boolean Algebra for Collections</h3>
+<p><code>dotset</code> filters a collection. It answers the question: <strong>"Which documents in this collection match a set of logical rules?"</strong> Its power comes from using the <strong>Logic Pillar</strong> as its decision engine for each document. A lazy, compositional <code>QuerySet</code> API allows for building complex queries efficiently.</p>
+<pre><code class="language-python"># Find all logs that are either a critical server error OR 
+# a database call that was too slow, but EXCLUDING any from a known-buggy service.
+logs = QuerySet(log_collection)
+
+# This query is translated into a dotlogic AST and applied to each document.
+results = logs.filter(
+    Q(level=&quot;error&quot;, source=&quot;server&quot;) | Q(source=&quot;db&quot;, latency_ms__gt=500)
+).exclude(
+    service_name=&quot;buggy-service-alpha&quot;
+)
+</code></pre>
+<h3 id="dotrelate-a-relational-algebra-for-collections"><code>dotrelate</code>: A Relational Algebra for Collections</h3>
+<p>While <code>dotset</code> filters a collection, <code>dotrelate</code> transforms and combines multiple collections. It's the conceptual parallel to <code>dotmap</code>, but for datasets. It answers: <strong>"How can these distinct collections be joined to create new, enriched data?"</strong></p>
+<p>The core operation is the <code>join</code>, which combines documents from two collections based on a shared key.</p>
+<pre><code class="language-python"># users = [{&quot;user_id&quot;: 1, &quot;name&quot;: &quot;Alice&quot;}, ...]
+# orders = [{&quot;order_id&quot;: 101, &quot;user_id&quot;: 2, &quot;item&quot;: &quot;Book&quot;}, ...]
+
+# Enrich each order with the name of the user who placed it.
+enriched_orders = dotrelate.join(left=orders, right=users, on=&quot;user_id&quot;)
+
+# -&gt; [{&quot;order_id&quot;: 101, ..., &quot;name&quot;: &quot;Bob&quot;}, ...]
+</code></pre>
+<h2 id="the-big-picture-a-unified-architecture">The Big Picture: A Unified Architecture</h2>
+<p>This journey reveals a coherent universe of tools, underpinned by a dual API (programmatic for developers, declarative JSON/string for users) and a philosophy of clean, single-purpose components.</p>
+<pre><code class="language-mermaid">graph TD
+    subgraph The_Dot_Universe [&quot;The Dot Notation Universe&quot;]
+        subgraph Single_Doc [&quot;Part I: Per-Document Intelligence ('Depth')&quot;]
+            direction TB
+
+            subgraph Addressing_Layer [&quot;Pillar 1: Addressing (Retrieval)&quot;]
+                dotget(&quot;dotget&quot;) --&gt; dotstar(&quot;dotstar&quot;) --&gt; dotquery(&quot;dotquery&quot;)
+            end
+
+            subgraph Logic_Layer [&quot;Pillar 2: Logic (Assertion)&quot;]
+                dotexists(&quot;dotexists&quot;) --&gt; dotanyall(&quot;dotany/dotall&quot;) --&gt; dotlogic(&quot;dotlogic&quot;)
+            end
+
+            subgraph Action_Layer [&quot;Pillar 3: Action (Manipulation)&quot;]
+                direction LR
+                write_branch[&quot;Write Branch&lt;br&gt;(dotmod, dotbatch)&quot;]
+                transform_branch[&quot;Transform Branch&lt;br&gt;(dotmap)&quot;]
+            end
+
+        end
+
+        subgraph Collection_Ops [&quot;Part II: Collection Operations ('Breadth')&quot;]
+            direction TB
+            subgraph Filter_Branch [&quot;Filter / Boolean Algebra&quot;]
+                dotset(&quot;dotset&quot;)
+            end
+            subgraph Relate_Branch [&quot;Relate / Relational Algebra&quot;]
+                dotrelate(&quot;dotrelate&quot;)
+            end
+        end
+
+        Addressing_Layer -- &quot;Provides paths for&quot; --&gt; Action_Layer
+        Addressing_Layer -- &quot;Provides paths for&quot; --&gt; Logic_Layer
+        Logic_Layer -- &quot;Provides decision engine for&quot; --&gt; Collection_Ops
+        Action_Layer -- &quot;(dotmap) provides primitives for&quot; --&gt; Relate_Branch
+    end
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

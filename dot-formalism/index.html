@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>The dot Ecosystem — A Formal Blueprint - The Dot Notation Universe</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "The dot Ecosystem \u2014 A Formal Blueprint";
+        var mkdocs_page_input_path = "dot-formalism.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> The Dot Notation Universe
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Welcome to the Dot Notation Universe</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../philosophy/">The Philosophy of the Dot Universe</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ecosystem/">The dot Ecosystem: A Tour</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">The Dot Notation Universe</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">The dot Ecosystem — A Formal Blueprint</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="the-dot-ecosystem-a-formal-blueprint">The <code>dot</code> Ecosystem — A Formal Blueprint</h1>
+<blockquote>
+<p><strong>Premise.</strong> Manipulating semi-structured data is easiest when every operation answers exactly one question and composes cleanly with every other operation.
+<strong>Goal.</strong> Provide a minimal yet complete algebra for JSON-like documents and their collections, with clear pedagogical on-ramps.
+<strong>Method.</strong> Factor the problem space into three orthogonal <em>pillars</em> (Depth ≈ Addressing, Truth ≈ Logic, Shape ≈ Transformation) and <em>lift</em> them from single documents to collections.</p>
+</blockquote>
+<hr />
+<h2 id="1-the-three-pillars">1 The Three Pillars</h2>
+<table>
+<thead>
+<tr>
+<th>Pillar</th>
+<th>Core Question</th>
+<th>Domain</th>
+<th>Codomain</th>
+<th>Primitive</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Depth</strong></td>
+<td>“<em>Where</em> is the data?”</td>
+<td>Document</td>
+<td>Path ↦ 𝑉*</td>
+<td><strong><code>dotget</code></strong></td>
+</tr>
+<tr>
+<td><strong>Truth</strong></td>
+<td>“<em>Is</em> this assertion true here?”</td>
+<td>Document</td>
+<td>𝔹</td>
+<td><strong><code>dotexists</code></strong></td>
+</tr>
+<tr>
+<td><strong>Shape</strong></td>
+<td>“<em>How</em> should the data be re-shaped?”</td>
+<td>Document</td>
+<td>Document</td>
+<td><strong><code>dotpluck</code></strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Notation.</em> A JSON document is an element of $\mathcal D$. A <em>path</em> is a finite sequence of selectors; evaluation yields either a single value or a multiset $V^{*}$ (to accommodate wildcards). Boolean results live in $\mathbb B={\bot,\top}$.</p>
+<h3 id="11-depth-addressing-algebra">1.1 Depth — Addressing Algebra</h3>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Operator</th>
+<th>Semantic Type</th>
+<th>Observations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>entry</td>
+<td><code>dotget</code></td>
+<td>$\mathcal D \times \text{Path}_{\text{exact}}\to V\cup{\emptyset}$</td>
+<td>Total if we treat “missing” as $\emptyset$.</td>
+</tr>
+<tr>
+<td>pattern</td>
+<td><code>dotstar</code></td>
+<td>$\mathcal D \times \text{Path}_{<em>} \to V^{</em>}$</td>
+<td>Wildcards induce <em>Kleene-star</em> expansion.</td>
+</tr>
+<tr>
+<td>workhorse</td>
+<td><code>dotselect</code></td>
+<td>$\mathcal D \times \text{Path}_{\text{expr}} \to V^{*}$</td>
+<td>Admits slices, filters ↔ regular-path queries.</td>
+</tr>
+<tr>
+<td>engine</td>
+<td><code>dotpath</code></td>
+<td>Free <strong>algebra</strong> on selectors; Turing-complete by user-defined reducers.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Formally</strong> each operator is a <em>morphism</em> in the Kleisli category of the powerset monad, ensuring compositionality: <code>dotstar</code> ∘ <code>dotselect</code> → still a set of values.</p>
+</blockquote>
+<h3 id="12-truth-predicate-calculus">1.2 Truth — Predicate Calculus</h3>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Operator</th>
+<th>Type</th>
+<th>Law</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>structure</td>
+<td><code>dotexists</code></td>
+<td>$\mathcal D \times P \to 𝔹$</td>
+<td><code>exists(p)</code> ≡ <code>count(dotstar(p)) &gt; 0</code>.</td>
+</tr>
+<tr>
+<td>content</td>
+<td><code>dotequals</code></td>
+<td>$\mathcal D \times (P,V) \to 𝔹$</td>
+<td>Reflexive, symmetric only on singleton paths.</td>
+</tr>
+<tr>
+<td>quantifiers</td>
+<td><code>dotany</code> / <code>dotall</code></td>
+<td>$\mathcal D \times (P, φ) \to 𝔹$</td>
+<td>Lift predicate $φ$ point-wise then aggregate with ∨ / ∧.</td>
+</tr>
+<tr>
+<td>engine</td>
+<td><code>dotquery</code></td>
+<td>$\mathcal D \times \mathcal L_{BOOL}(φ_i) \to 𝔹$</td>
+<td>$\mathcal L_{BOOL}$ is propositional logic; distributive laws preserve short-circuit semantics.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Boolean algebra closure.</strong> Predicates form a Boolean algebra under ∧, ∨, ¬ that is <em>homomorphic</em> to set algebra on result subsets (intersection, union, complement).</p>
+</blockquote>
+<h3 id="13-shape-endofunctors-on-mathcal-d">1.3 Shape — Endofunctors on $\mathcal D$</h3>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Operator</th>
+<th>Type</th>
+<th>Category-theoretic view</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>extract</td>
+<td><code>dotpluck</code></td>
+<td>$\mathcal D \times P \to V^{*}$</td>
+<td>Not a transform; a <em>projection</em> functor to Sets.</td>
+</tr>
+<tr>
+<td>surgical</td>
+<td><code>dotmod</code></td>
+<td>$\mathcal D \times δ \to \mathcal D$</td>
+<td>δ = {insert, update, delete}. <em>Lens</em> with put-get law.</td>
+</tr>
+<tr>
+<td>compositional</td>
+<td><code>dotpipe</code></td>
+<td>$\mathcal D \times F^{*} \to \mathcal D$</td>
+<td>Kleisli composition of pure functions $F: \mathcal D→\mathcal D$.</td>
+</tr>
+<tr>
+<td>transactional</td>
+<td><code>dotbatch</code></td>
+<td>$\mathcal D^{<em>} \times Δ^{</em>} \to \mathcal D^{*}$</td>
+<td><em>Monoid</em> action; supports ACID if Δ is sequence-serialisable.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-lifting-to-collections">2 Lifting to Collections</h2>
+<p>Let a <em>collection</em> be a finite multiset $C \subseteq \mathcal D$. Operations lift via:</p>
+<p>$$
+\operatorname{map} : (\mathcal D \to X) \to (C \to X^{*}) \qquad
+\operatorname{filter} : (\mathcal D \to 𝔹) \to (C \to C)
+$$</p>
+<h3 id="21-boolean-wing-filtering">2.1 Boolean Wing (Filtering)</h3>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Definition</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dothas</code></td>
+<td>$C, P \mapsto {d∈C \mid \text{dotexists}(d,P)}$</td>
+<td>Primitive filter.</td>
+</tr>
+<tr>
+<td><code>dotfind</code></td>
+<td>$C, φ \mapsto {d∈C \mid φ(d)}$</td>
+<td><code>φ</code> any Truth-pillar predicate.</td>
+</tr>
+<tr>
+<td><code>dotfilter</code></td>
+<td>Higher-order: accepts combinators (AND/OR/NOT).</td>
+<td>Closure under Boolean algebra proven by homomorphism.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-transforming-wing-mapping-relating">2.2 Transforming Wing (Mapping &amp; Relating)</h3>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Lifted From</th>
+<th>Semantics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dotmod</code>, <code>dotpipe</code>, <code>dotbatch</code>, <code>dotpluck</code></td>
+<td>Shape pillar</td>
+<td>Point-wise map; distributive over union.</td>
+</tr>
+<tr>
+<td><code>dotrelate</code></td>
+<td><em>new</em></td>
+<td>Binary relation $C_1 \Join C_2 \to C_{12}$; isomorphic to relational algebra (σ, π, ⋈, ∪, −).</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Key guarantee.</strong> Every collection operator is a <em>monoid homomorphism</em> w.r.t. multiset union, enabling parallelisation and streaming.</p>
+</blockquote>
+<hr />
+<h2 id="3-pedagogical-gradient">3 Pedagogical Gradient</h2>
+<ol>
+<li><strong>Hello-World phase.</strong> <code>dotget</code>, <code>dotexists</code>, <code>dotpluck</code> —  O(1) mental load.</li>
+<li><strong>Pattern phase.</strong> Add <code>dotstar</code>, <code>dotequals</code>, <code>dotmod</code>.</li>
+<li><strong>Power-user phase.</strong> <code>dotselect</code>, <code>dotany/all</code>, <code>dotpipe</code>.</li>
+<li><strong>Expert / DSL author.</strong> <code>dotpath</code>, <code>dotquery</code>, <code>dotbatch</code>, <code>dotrelate</code>.</li>
+</ol>
+<p>Each stage is <em>conservative</em>: every new construct can be desugared into earlier ones plus a small kernel, preserving learnability.</p>
+<hr />
+<h2 id="4-design-invariants">4 Design Invariants</h2>
+<ul>
+<li><strong>Purity &amp; Immutability.</strong> Functions are referentially transparent; concurrency is trivial.</li>
+<li><strong>Totality by Convention.</strong> Missing paths yield $\emptyset$ rather than exceptions, pushing error handling into the type.</li>
+<li><strong>Compositionality.</strong> Operators form algebras (Boolean, monoidal, Kleisli) guaranteeing that <em>compose ⇒ reason locally</em>.</li>
+<li><strong>Orthogonality.</strong> No operator belongs to more than one pillar; cross-cutting concerns are expresses as functor lifts, not ad-hoc features.</li>
+<li><strong>Extensibility.</strong> Users can register new selector primitives or predicates; completion is measured against algebraic closure, not feature lists.</li>
+</ul>
+<hr />
+<h2 id="5-big-picture-fit">5 Big-Picture Fit</h2>
+<ul>
+<li><code>dot</code>’s <strong>Depth–Truth–Shape</strong> triad mirrors the <strong>CRUD</strong> partition (Read, Validate, Update).</li>
+<li>The collection lift embeds seamlessly into stream processors (e.g., UNIX pipes, Apache Beam) because all lifted ops are monoid homomorphisms.</li>
+<li>Advanced users can harvest <strong>category-theoretic</strong> intuition: paths are <em>optics</em>, predicates are <em>subobjects</em>, transforms are <em>endofunctors</em>.</li>
+<li>The architecture matches database theory: single-document logic ≈ tuple calculus; <code>dotrelate</code> ≈ relational algebra; streaming lift ≈ data-parallel query plans.</li>
+</ul>
+<hr />
+<h2 id="6-next-questions-skeptical-checklist">6 Next Questions (Skeptical Checklist)</h2>
+<ol>
+<li><strong>Can every JSONPath feature be expressed in <code>dotpath</code> without semantic leaks?</strong></li>
+<li><strong>Are <code>dotbatch</code> rollbacks composable with streaming sinks?</strong></li>
+<li><strong>Which algebraic laws break under heterogeneous array mixes, and do we care?</strong></li>
+<li><strong>How do we reconcile user-defined side-effectful functions with purity guarantees?</strong></li>
+<li><strong>Can the type system (e.g., gradual typing) enforce pillar boundaries statically?</strong></li>
+</ol>
+<hr />
+<h3 id="tldr">TL;DR</h3>
+<p><code>dot</code> is not a toolbox; it is a <strong>small, law-governed algebra</strong> for interrogating and reshaping data.
+Three orthogonal pillars give you location, truth, and transformation; functorial lifting scales them to streams. Everything else is just syntax sugar.</p>
+<hr />
+<p>let's think very carefully about how to improve  our documents with this formalism. we can also read from proposal-collections-pillar.md for ideas.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

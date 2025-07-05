@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>The dot Ecosystem: A Tour - The Dot Notation Universe</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "The dot Ecosystem: A Tour";
+        var mkdocs_page_input_path = "ecosystem.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> The Dot Notation Universe
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Welcome to the Dot Notation Universe</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../philosophy/">The Philosophy of the Dot Universe</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">The dot Ecosystem: A Tour</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#the-two-pillars-addressing-and-logic">The Two Pillars: Addressing and Logic</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-the-addressing-pillar-what-is-the-data">1. The Addressing Pillar: "What is the data?"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-the-logic-pillar-is-this-statement-true">2. The Logic Pillar: "Is this statement true?"</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-tools-a-detailed-look">The Tools: A Detailed Look</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#dotget-simple-exact-addressing">dotget: Simple, Exact Addressing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dotstar-simple-wildcard-addressing">dotstar: Simple Wildcard Addressing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dotselect-advanced-selection">dotselect: Advanced Selection</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dotpath-the-master-addressing-engine">dotpath: The Master Addressing Engine</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dotexists-simple-existence-check">dotexists: Simple Existence Check</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dotquery-the-logic-engine">dotquery: The Logic Engine</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-transformation-tools">The Transformation Tools</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">The Dot Notation Universe</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">The dot Ecosystem: A Tour</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="the-dot-ecosystem-a-tour">The <code>dot</code> Ecosystem: A Tour</h1>
+<p>The <code>dot</code> ecosystem is a suite of small, focused Python libraries for manipulating nested data structures. Each tool follows the Unix philosophy: it does one thing and does it well. They are designed to be composed together, often in a pipeline, to perform complex data transformations in a clear and predictable way.</p>
+<p>This document provides an overview of each tool, its core philosophy, and its primary use case.</p>
+<h2 id="the-two-pillars-addressing-and-logic">The Two Pillars: Addressing and Logic</h2>
+<p>The ecosystem is divided into two pillars, each answering a different fundamental question.</p>
+<h3 id="1-the-addressing-pillar-what-is-the-data">1. The Addressing Pillar: "What is the data?"</h3>
+<p>These tools are used to <strong>find and retrieve</strong> data from your nested structures. They are organized in layers of increasing power, following the "Principle of Least Power."</p>
+<ul>
+<li><strong><code>dotget</code></strong>: The simplest tool. Gets a value from a single, exact path.</li>
+<li><strong><code>dotstar</code></strong>: Adds wildcard matching (<code>*</code>) to find all items that match a structural pattern.</li>
+<li><strong><code>dotselect</code></strong>: The most powerful user-facing selector. Adds deep searches (<code>**</code>) and attribute-based filtering (<code>[key=value]</code>).</li>
+<li><strong><code>dotpath</code></strong>: The underlying, extensible engine that powers <code>dotselect</code> and <code>dotquery</code>.</li>
+</ul>
+<h3 id="2-the-logic-pillar-is-this-statement-true">2. The Logic Pillar: "Is this statement true?"</h3>
+<p>These tools are used to <strong>ask questions</strong> about your data. They don't return the data itself, but rather a boolean result (<code>True</code>/<code>False</code>) or an exit code (<code>0</code>/<code>1</code>).</p>
+<ul>
+<li><strong><code>dotexists</code></strong>: The simplest logical check. Determines if a single, exact path exists.</li>
+<li><strong><code>dotquery</code></strong>: A powerful logic engine that evaluates complex, chainable queries against your data.</li>
+</ul>
+<hr />
+<h2 id="the-tools-a-detailed-look">The Tools: A Detailed Look</h2>
+<h3 id="dotget-simple-exact-addressing"><code>dotget</code>: Simple, Exact Addressing</h3>
+<ul>
+<li><strong>Pillar:</strong> Addressing</li>
+<li><strong>What it does:</strong> Gets a single value from a nested data structure using a precise, dot-separated path.</li>
+<li><strong>Philosophy:</strong> Do one thing well. <code>dotget</code> is intentionally simple, has no dependencies, and its core logic is a single, small function. You are encouraged to <strong>"steal this code"</strong> to avoid adding a dependency for such a simple task.</li>
+<li><strong>When to use it:</strong> When you know the exact path to the data you need, like reading from a config file or a stable API response.</li>
+</ul>
+<pre><code class="language-python">from dotget import get
+data = {&quot;users&quot;: [{&quot;name&quot;: &quot;Alice&quot;}]}
+get(data, &quot;users.0.name&quot;)
+# =&gt; 'Alice'
+</code></pre>
+<h3 id="dotstar-simple-wildcard-addressing"><code>dotstar</code>: Simple Wildcard Addressing</h3>
+<ul>
+<li><strong>Pillar:</strong> Addressing</li>
+<li><strong>What it does:</strong> Finds all values in a data structure that match a pattern containing wildcards (<code>*</code>).</li>
+<li><strong>Philosophy:</strong> Simple, dependency-free pattern matching. The <code>*</code> wildcard matches all items in a list or all values in a dictionary. Like <code>dotget</code>, it is simple enough to be "stolen."</li>
+<li><strong>When to use it:</strong> When you need to extract all data that conforms to a certain structure, like getting all names from a list of user objects.</li>
+</ul>
+<pre><code class="language-python">from dotstar import search
+data = {&quot;users&quot;: [{&quot;name&quot;: &quot;Alice&quot;}, {&quot;name&quot;: &quot;Bob&quot;}]}
+search(data, &quot;users.*.name&quot;)
+# =&gt; ['Alice', 'Bob']
+</code></pre>
+<h3 id="dotselect-advanced-selection"><code>dotselect</code>: Advanced Selection</h3>
+<ul>
+<li><strong>Pillar:</strong> Addressing</li>
+<li><strong>What it does:</strong> The primary user-facing tool for complex queries. It extends the simple wildcard syntax of <code>dotstar</code> with descendant selectors (<code>**</code>) and predicate filters (<code>[key=value]</code>).</li>
+<li><strong>Philosophy:</strong> Provide a powerful and expressive syntax for the 90% of complex queries, built on the <code>dotpath</code> engine.</li>
+<li><strong>When to use it:</strong> When you need to find data based on its value, without knowing its exact location. It is the go-to tool for most advanced data selection tasks.</li>
+</ul>
+<pre><code class="language-python">from dotselect import find_first
+data = {&quot;spec&quot;: {&quot;components&quot;: [{&quot;type&quot;: &quot;server&quot;, &quot;ports&quot;: [80, 443]}]}}
+
+# Find the ports of the 'server' component, wherever it is.
+find_first(data, &quot;**[type=server].ports&quot;)
+# =&gt; [80, 443]
+</code></pre>
+<h3 id="dotpath-the-master-addressing-engine"><code>dotpath</code>: The Master Addressing Engine</h3>
+<ul>
+<li><strong>Pillar:</strong> Addressing (Engine)</li>
+<li><strong>What it does:</strong> <code>dotpath</code> is the foundational <em>extensible</em> addressing library for the ecosystem. It provides the engine for parsing and evaluating the complex paths used by <code>dotselect</code> and <code>dotquery</code>.</li>
+<li><strong>Philosophy:</strong> An addressing engine should be an extensible machine. It is the "Lambda of Paths": it allows the path language itself to be extended for specialized use cases.</li>
+<li><strong>When to use it:</strong> You will typically use <code>dotpath</code> indirectly. You would interact with it directly only if you need to create your own custom pathing logic or extend the path language with new capabilities.</li>
+</ul>
+<h3 id="dotexists-simple-existence-check"><code>dotexists</code>: Simple Existence Check</h3>
+<ul>
+<li><strong>Pillar:</strong> Logic</li>
+<li><strong>What it does:</strong> Checks for the existence of a value at a precise path.</li>
+<li><strong>Philosophy:</strong> The logical counterpart to <code>dotget</code>. It provides the simplest possible truth check: "Is it there?"</li>
+<li><strong>When to use it:</strong> To verify that a required key is present in configuration or to guard a <code>dotget</code> call in a script.</li>
+</ul>
+<pre><code class="language-python">from dotexists import check
+data = {&quot;user&quot;: {&quot;name&quot;: &quot;Alice&quot;, &quot;address&quot;: None}}
+check(data, &quot;user.name&quot;)    # =&gt; True
+check(data, &quot;user.age&quot;)     # =&gt; False
+</code></pre>
+<h3 id="dotquery-the-logic-engine"><code>dotquery</code>: The Logic Engine</h3>
+<ul>
+<li><strong>Pillar:</strong> Logic</li>
+<li><strong>What it does:</strong> Asks complex, compositional questions about your data and returns a boolean result.</li>
+<li><strong>Philosophy:</strong> Logic is the anatomy of thought. <code>dotquery</code> separates asking a question from retrieving data. It is for validation and conditional logic, not data extraction.</li>
+<li><strong>When to use it:</strong> When you need to validate a document against a set of rules or make decisions in a script based on the content of your data.</li>
+</ul>
+<pre><code class="language-bash"># In the shell, check if any user is an admin
+$ cat users.json | dotquery &quot;any equals role admin&quot;
+$ echo $?
+# =&gt; 0 (True)
+</code></pre>
+<hr />
+<h2 id="the-transformation-tools">The Transformation Tools</h2>
+<p>Building on the addressing and logic pillars, the transformation tools help you modify, process, and reshape your data.</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Core Function</th>
+<th>Philosophy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>dotmod</code></strong></td>
+<td>Perform immutable modifications to data</td>
+<td>Predictable state change</td>
+</tr>
+<tr>
+<td><strong><code>dotbatch</code></strong></td>
+<td>Apply a sequence of modifications atomically</td>
+<td>Transactions for data</td>
+</tr>
+<tr>
+<td><strong><code>dotpipe</code></strong></td>
+<td>Transform data into a new shape</td>
+<td>Data transformation as a pipeline</td>
+</tr>
+<tr>
+<td><strong><code>dotrelate</code></strong></td>
+<td>Perform relational algebra on collections of data</td>
+<td>Bringing database concepts to JSON</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../philosophy/" class="btn btn-neutral float-left" title="The Philosophy of the Dot Universe"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../philosophy/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
