@@ -17,7 +17,7 @@ These tools are used to **find and retrieve** data from your nested structures. 
 - **`dotselect`**: The most powerful user-facing selector. Adds deep searches (`**`) and attribute-based filtering (`[key=value]`).
 - **`dotpath`**: The underlying, extensible engine that powers `dotselect` and `dotquery`.
 
-### 2. The Logic Pillar: "Is this statement true?"
+### 2. The Truth Pillar: "Is this statement true?"
 
 These tools are used to **ask questions** about your data. They don't return the data itself, but rather a boolean result (`True`/`False`) or an exit code (`0`/`1`).
 

@@ -37,7 +37,7 @@ With a complete toolkit for single documents, we can now operate on collections,
 
 ### `dotset`: A Boolean Algebra for Collections
 
-`dotset` filters a collection. It answers the question: **"Which documents in this collection match a set of logical rules?"** Its power comes from using the **Logic Pillar** as its decision engine for each document. A lazy, compositional `QuerySet` API allows for building complex queries efficiently.
+`dotset` filters a collection. It answers the question: **"Which documents in this collection match a set of logical rules?"** Its power comes from using the **Truth Pillar** as its decision engine for each document. A lazy, compositional `QuerySet` API allows for building complex queries efficiently.
 
 ```python
 # Find all logs that are either a critical server error OR 

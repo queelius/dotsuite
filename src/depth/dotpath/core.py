@@ -2,7 +2,6 @@
 # A fully extensible, registration-based engine where each path
 # capability is encapsulated in a self-contained, expert class.
 
-import re
 import json
 from abc import ABC, abstractmethod
 from typing import Any, List, Iterable, Optional, Tuple, Type, Dict

@@ -3,10 +3,7 @@ from dataclasses import dataclass, fields
 from copy import deepcopy
 
 # dotbatch's core purpose is to orchestrate dotmod. It is a critical dependency.
-try:
-    from dotmod import set_, delete_, update_, append_
-except ImportError:
-    raise ImportError("dotbatch requires the 'dotmod' library. Please install it.")
+from shape.dotmod.core import set_, delete_, update_, append_
 
 
 # Define the universe of possible modification verbs.

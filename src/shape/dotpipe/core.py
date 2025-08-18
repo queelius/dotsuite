@@ -1,13 +1,8 @@
-import functools
 from copy import deepcopy
 from typing import Any, Callable, Dict, List, Optional, Union
 
 # dotpipe has a critical dependency on the dotpath engine to resolve paths.
-try:
-    from dotpath import find_all
-except ImportError:
-    # If dotpath is not installed, raise a helpful error.
-    raise ImportError("dotpipe requires the 'dotpath' library. Please install it.")
+from depth.dotpath import create_default_engine
 
 
 # --- Safe Function Registry for the DSL ---
@@ -67,7 +62,9 @@ class Pipeline:
             then: An optional function or list of named functions to apply to the selected data.
         """
         # find_all always returns an iterable.
-        selected_values = list(find_all(self._source_data, from_path))
+        engine = create_default_engine()
+        ast = engine.parse(from_path)
+        selected_values = list(engine.evaluate(ast, self._source_data))
 
         # If a path resolves to a single item, we process that item directly.
         # If it resolves to multiple, we process the list.
@@ -167,3 +164,7 @@ def _apply_function_chain(value: Any, funcs: Optional[Union[str, List[str], Call
         result = resolved_func(result)
         
     return result
+
+
+# Alias for consistency with other modules
+pipe = from_dsl

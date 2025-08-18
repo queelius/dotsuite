@@ -5,7 +5,6 @@ A tiny library for accessing nested data structures using dot notation.
 No dependencies. No magic. Just simple paths.
 """
 
-from typing import Any, Optional, Union
 from .path import Path
 
 def get(data, path):

@@ -7,17 +7,29 @@ The **dot ecosystem** is a suite of composable tools for working with nested dat
 ## Installation
 
 ```bash
-# Install the entire ecosystem
+# Install from PyPI (once published)
 pip install dotsuite
+```
 
-# Or install only what you need
-pip install dotsuite[addressing]    # dotget, dotstar, dotselect, dotpath
-pip install dotsuite[logic]         # dotexists, dotany, dotall, dotquery
-pip install dotsuite[transform]     # dotmod, dotbatch, dotpipe, dotpluck
-pip install dotsuite[collections]   # dotfilter, dotrelate
+### Install from Source
 
-# Individual tools
-pip install dotsuite[dotget,dotquery,dotmod]
+```bash
+# Clone and install
+git clone https://github.com/yourusername/dotsuite.git
+cd dotsuite
+pip install -e .
+
+# For development with testing tools
+make install-dev
+```
+
+### Publishing to PyPI
+
+```bash
+# Build and publish (for maintainers)
+make build         # Build distribution packages
+make publish-test  # Publish to TestPyPI
+make publish       # Publish to PyPI
 ```
 
 ## Motivation
@@ -44,10 +56,14 @@ These pillars operate on single documents, and then **lift** to collections thro
 ## Quick Start
 
 ```python
-from dotget import get
-from dotstar import search  
-from dotquery import Query
-from dotmod import set_
+import sys
+sys.path.insert(0, 'src')  # If running from repo root
+
+# Import from the three pillars
+from depth.dotget.core import get
+from depth.dotstar.core import search  
+from truth.dotquery.core import Query
+from shape.dotmod.core import set_
 
 # Simple exact addressing
 data = {"users": [{"name": "Alice", "role": "admin"}]}
@@ -73,7 +89,7 @@ new_data = set_(data, "users.0.status", "active")
 | **[`dotstar`](dotstar/)** | Wildcard patterns | `search(data, "users.*.name")` |
 | **[`dotselect`](dotselect/)** | Advanced selection with predicates | `find_first(data, "users[role=admin].name")` |
 | **[`dotpath`](dotpath/)** | Extensible path engine | Powers other tools, JSONPath-compatible |
-| **[`dotpluck`](dotpluck/)** | Extract multiple values | Creates new structures from selections |
+| **[`dotpluck`](dotpluck/)** | Extract multiple values | Creates new structures from selections (planned) |
 
 **Philosophy:** Start simple with `dotget` for known paths, add `dotstar` for patterns, use `dotselect` for complex queries. The `dotpath` engine underpins them all with extensible, Turing-complete addressing.
 
@@ -82,10 +98,10 @@ new_data = set_(data, "users.0.status", "active")
 | Tool | Purpose | Example |
 |------|---------|---------|
 | **[`dotexists`](dotexists/)** | Path existence | `check(data, "user.email")` |
-| **[`dotany`](dotany/)** | Existential quantifier | `check(data, "users.*.role", equals="admin")` |
-| **[`dotall`](dotall/)** | Universal quantifier | `check(data, "users.*.status", equals="active")` |
+| **[`dotany`](dotany/)** | Existential quantifier | `any_match(data, "users.*.role", "admin")` |
+| **[`dotall`](dotall/)** | Universal quantifier | `all_match(data, "users.*.status", "active")` |
 | **[`dotquery`](dotquery/)** | Compositional logic engine | `Query("any equals role admin").check(data)` |
-| **[`dotfilter`](dotfilter/)** | Boolean algebra on collections | Lazy querysets with full boolean logic |
+| **[`dotfilter`](dotfilter/)** | Boolean algebra on collections | Lazy querysets with full boolean logic (planned) |
 
 **Philosophy:** Boolean questions should be separate from data extraction. Start with `dotexists` for simple checks, compose complex logic with `dotquery`, and use `dotfilter` for collection-level boolean algebra.
 
@@ -103,7 +119,7 @@ new_data = set_(data, "users.0.status", "active")
 
 | Tool | Purpose | Domain |
 |------|---------|--------|
-| **[`dotfilter`](dotfilter/)** | Boolean algebra on document collections | Filter, intersect, union with lazy evaluation |
+| **[`dotfilter`](dotfilter/)** | Boolean algebra on document collections | Filter, intersect, union with lazy evaluation (planned) |
 | **[`dotrelate`](dotrelate/)** | Relational operations | Join, project, union collections like database tables |
 
 **Philosophy:** Lift single-document operations to collections. `dotfilter` provides set operations with boolean logic, while `dotrelate` enables database-style joins and projections.
@@ -205,6 +221,18 @@ Each tool has comprehensive documentation in its subdirectory:
 - [**dotpluck**](dotpluck/) - Value extraction and reshaping
 - [**dotfilter**](dotfilter/) - Boolean algebra on collections
 - [**dotrelate**](dotrelate/) - Relational operations
+
+## Production-Ready Alternative
+
+While dotsuite focuses on pedagogy and simplicity, for production use cases requiring advanced features like streaming, complex path operations, and S-expression queries, consider [**JAF (Just Another Flow)**](https://github.com/realazthat/jaf). JAF implements similar concepts to dotfilter and dotpipe in a feature-complete, production-ready package with:
+
+- Lazy streaming evaluation for large datasets
+- Advanced path system with regex, fuzzy matching, and wildcards
+- S-expression query language
+- Index-preserving result sets for powerful set operations
+- Support for multiple data sources (files, directories, stdin, compressed)
+
+Think of dotsuite as the "learn by building" approach and JAF as the "battle-tested solution" - both valuable for different purposes.
 
 ## Contributing
 

@@ -8,7 +8,7 @@ This document proposes a formal, three-pillar structure for the `dot` ecosystem.
 The `dot` ecosystem is organized into three distinct pillars, each answering a fundamental question about data:
 
 1.  **The Addressing Pillar (Depth):** Answers **"Where is the data?"** within a *single document*.
-2.  **The Logic Pillar (Truth):** Answers **"Is this true?"** about a *single document*.
+2.  **The Truth Pillar:** Answers **"Is this true?"** about a *single document*.
 3.  **The Collections Pillar (Breadth):** Operates on a *collection of documents* to answer **"Which documents?"** or **"What is the new collection?"**.
 
 ## The Ecosystem Diagram
@@ -46,7 +46,7 @@ This pillar focuses on finding and extracting data from within a single document
 3.  **`dotselect` (Advanced):** The workhorse. Uses the full `dotpath` engine to perform complex selections with filters, slices, and descendants.
 4.  **`dotpath` (Engine):** The underlying path-parsing and resolution engine that is extensible and compositional, allowing for custom path segments and logic. The simpler operations (`dotget`, `dotstar`, `dotselect`) should not be built on top of `dotpath`, but implemented as simply as possible to avoid unnecessary complexity. However, conceptually, `dotpath` is the "Turing-complete" addressing engine of the ecosystem, allowing for arbitrary path expressions and logic.
 
-### Pillar 2: The Logic Pillar (Truth)
+### Pillar 2: The Truth Pillar
 
 This pillar focuses on asking true/false questions about a single document.
 

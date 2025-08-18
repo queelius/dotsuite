@@ -24,3 +24,16 @@ dotall = "dotsall.cli:main"
 
 [project.urls]
 Homepage = "https://github.com/queelius/dotsuite"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/depth", "src/truth", "src/shape", "src/collections"]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0",
+    "mkdocs>=1.5",
+    "mkdocs-material>=9.0",
+    "pymdown-extensions>=10.0"
+]

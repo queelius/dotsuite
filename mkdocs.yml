@@ -1,8 +1,45 @@
-site_name: The Dot Notation Universe
-theme: readthedocs
+site_name: dotsuite - The Dot Notation Universe
+site_description: A Unix-philosophy ecosystem for nested data manipulation using dot notation
+site_author: Your Name
+site_url: https://yourdocs.url
+
+theme: 
+  name: readthedocs
+  highlightjs: true
+  hljs_languages:
+    - python
+    - bash
+    - json
+    - yaml
 
 nav:
-    - 'index.md'
-    - 'getting-started.md'
-    - 'philosophy.md'
-    - 'ecosystem.md'
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Core Concepts:
+    - Philosophy: philosophy.md
+    - Ecosystem: ecosystem.md
+    - Formal Specification: dot-formalism.md
+  - Architecture:
+    - Collections Pillar: proposal-collections-pillar.md
+    - Universe Overview: dot-notation-universe.md
+  - Comparisons:
+    - JAF vs Dotsuite: jaf-comparison.md
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed
+
+extra:
+  version: 0.1.0
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yourusername/dotsuite
+
+plugins:
+  - search

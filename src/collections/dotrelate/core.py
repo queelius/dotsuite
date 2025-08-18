@@ -1,5 +1,4 @@
 import json
-from itertools import product
 
 def left_join(left_collection, right_collection, left_on, right_on):
     right_map = {item.get(right_on): item for item in right_collection}

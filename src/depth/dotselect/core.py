@@ -1,4 +1,3 @@
-from typing import Any, Iterable, Optional
 
 # We alias the functions from the master `dotpath` engine.
 # `dotselect` is just a curated, user-friendly interface to the powerful

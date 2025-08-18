@@ -22,7 +22,7 @@ The entire addressing layer is consolidated into a single, powerful, and extensi
 - **Filters/Predicates**: `books[?(@.price < 10)]`
 - **Extensibility**: The engine can be taught new syntax, like fuzzy key matching, by registering new segment parsers.
 
-All other tools in the ecosystem that need to find data (`dotquery`, `dotmod`, etc.) use `dotpath` as their internal engine.
+While `dotpath` is powerful, many tools in the ecosystem intentionally remain simple and self-contained. For example, `dotget` is just a few lines of code you're encouraged to copy rather than import - embodying the "steal this code" philosophy.
 
 ### The Action Layer (Manipulation)
 
