@@ -17,10 +17,28 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 [project.scripts]
-dotbatch = "dotbatch.cli:main"
-dotquery = "dotquery.cli:main"
-dotrelate = "dotrelate.cli:cli"
-dotall = "dotsall.cli:main"
+# Depth pillar - Data location & extraction
+dotget = "depth.dotget.cli:main"
+dotstar = "depth.dotstar.cli:main"
+dotselect = "depth.dotselect.cli:main"
+dotpath = "depth.dotpath.cli:main"
+
+# Truth pillar - Boolean logic & validation
+dotexists = "truth.dotexists.cli:main"
+dotequals = "truth.dotequals.cli:main"
+dotany = "truth.dotany.cli:main"
+dotall = "truth.dotall.cli:main"
+dotquery = "truth.dotquery.cli:main"
+
+# Shape pillar - Data transformation
+dotmod = "shape.dotmod.cli:main"
+dotbatch = "shape.dotbatch.cli:main"
+dotpipe = "shape.dotpipe.cli:main"
+dotpluck = "shape.dotpluck.cli:main"
+
+# Collections pillar - Set operations
+dotfilter = "collections.dotfilter.cli:main"
+dotrelate = "collections.dotrelate.cli:main"
 
 [project.urls]
 Homepage = "https://github.com/queelius/dotsuite"

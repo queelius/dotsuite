@@ -1,8 +1,11 @@
-class Path:
-    def __init__(self, path):
-        self.parts = path.split('.')
+from typing import Any, List, Optional, Union
 
-    def get(self, data):
+
+class Path:
+    def __init__(self, path: str) -> None:
+        self.parts: List[str] = path.split('.')
+
+    def get(self, data: Any) -> Any:
         for part in self.parts:
             if isinstance(data, dict):
                 data = data.get(part)

@@ -10,7 +10,9 @@ Basic usage:
     ['Alice', 'Bob']
 """
 
-def search(data, pattern):
+from typing import Any, List, Tuple, Union
+
+def search(data: Any, pattern: Union[str, 'Pattern']) -> List[Any]:
     """
     Search for all values matching a pattern with wildcards.
 
@@ -38,7 +40,7 @@ def search(data, pattern):
     return results
 
 
-def find_all(data, pattern):
+def find_all(data: Any, pattern: Union[str, 'Pattern']) -> List[Tuple[str, Any]]:
     """
     Find all paths and values matching a pattern.
 
@@ -62,7 +64,7 @@ def find_all(data, pattern):
     return results
 
 
-def _search_recursive(data, segments, results):
+def _search_recursive(data: Any, segments: List[str], results: List[Any]) -> None:
     """Recursively search for values matching pattern segments."""
     if not segments:
         results.append(data)
@@ -93,7 +95,7 @@ def _search_recursive(data, segments, results):
             return
 
 
-def _find_recursive(data, segments, current_path, results):
+def _find_recursive(data: Any, segments: List[str], current_path: List[str], results: List[Tuple[str, Any]]) -> None:
     """Recursively find all paths matching pattern segments."""
     if not segments:
         path_str = '.'.join(current_path)
@@ -138,7 +140,7 @@ class Pattern:
         >>> user_emails = users / "email"
     """
 
-    def __init__(self, pattern=""):
+    def __init__(self, pattern: str = "") -> None:
         """Create a pattern from string."""
         self.pattern = pattern
 
