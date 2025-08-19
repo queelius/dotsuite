@@ -22,6 +22,24 @@ nav:
   - Architecture:
     - Collections Pillar: proposal-collections-pillar.md
     - Universe Overview: dot-notation-universe.md
+  - Tools:
+    - Depth Pillar:
+      - dotget: tools/depth/dotget.md
+      - dotstar: tools/depth/dotstar.md
+    - Truth Pillar:
+      - dotexists: tools/truth/dotexists.md
+      - dotequals: tools/truth/dotequals.md
+      - dotany: tools/truth/dotany.md
+      - dotall: tools/truth/dotall.md
+      - dotquery: tools/truth/dotquery.md
+    - Shape Pillar:
+      - dotmod: tools/shape/dotmod.md
+      - dotbatch: tools/shape/dotbatch.md
+      - dotpipe: tools/shape/dotpipe.md
+      - dotpluck: tools/shape/dotpluck.md
+    - Collections Pillar:
+      - dotfilter: tools/collections/dotfilter.md
+      - dotrelate: tools/collections/dotrelate.md
   - Comparisons:
     - JAF vs Dotsuite: jaf-comparison.md
 
