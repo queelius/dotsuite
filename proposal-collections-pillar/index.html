@@ -3,24 +3,28 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Your Name" /><link rel="canonical" href="https://yourdocs.url/proposal-collections-pillar/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Proposal: The Three Pillars of the dot Ecosystem - The Dot Notation Universe</title>
+    <title>Collections Pillar - dotsuite - The Dot Notation Universe</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Proposal: The Three Pillars of the dot Ecosystem";
+        var mkdocs_page_name = "Collections Pillar";
         var mkdocs_page_input_path = "proposal-collections-pillar.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/proposal-collections-pillar/";
       </script>
     
     <!--[if lt IE 9]>
       <script src="../js/html5shiv.min.js"></script>
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
       <script>hljs.highlightAll();</script> 
 </head>
 
@@ -30,8 +34,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href=".." class="icon icon-home"> The Dot Notation Universe
-        </a><div role="search">
+          <a href=".." class="icon icon-home"> dotsuite - The Dot Notation Universe
+        </a>
+        <div class="version">
+          0.1.0
+        </div><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
@@ -40,20 +47,98 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="..">Welcome to the Dot Notation Universe</a>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting Started</a>
                 </li>
               </ul>
+              <p class="caption"><span class="caption-text">Core Concepts</span></p>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../philosophy/">The Philosophy of the Dot Universe</a>
-                </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../philosophy/">Philosophy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ecosystem/">Ecosystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dot-formalism/">Formal Specification</a>
+                  </li>
               </ul>
+              <p class="caption"><span class="caption-text">Architecture</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Collections Pillar</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#the-core-idea-depth-truth-and-breadth">The Core Idea: Depth, Truth, and Breadth</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-ecosystem-diagram">The Ecosystem Diagram</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#pillar-1-the-addressing-pillar-depth">Pillar 1: The Addressing Pillar (Depth)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pillar-2-the-truth-pillar">Pillar 2: The Truth Pillar</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pillar-3-the-transformation-pillar-shape">Pillar 3: The Transformation Pillar (Shape)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#collections-lifting-the-pillars-to-streams">Collections: Lifting the Pillars to Streams</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#summary-table">Summary Table</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#design-principles">Design Principles</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dot-notation-universe/">Universe Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tools</span></p>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../ecosystem/">The dot Ecosystem: A Tour</a>
+                  <li class="toctree-l1"><a class="reference internal" >Depth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/depth/dotget/">dotget</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/depth/dotstar/">dotstar</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Truth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/truth/dotexists/">dotexists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/truth/dotequals/">dotequals</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/truth/dotany/">dotany</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/truth/dotall/">dotall</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/truth/dotquery/">dotquery</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Shape Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/shape/dotmod/">dotmod</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/shape/dotbatch/">dotbatch</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/shape/dotpipe/">dotpipe</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/shape/dotpluck/">dotpluck</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Collections Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/collections/dotfilter/">dotfilter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/collections/dotrelate/">dotrelate</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Comparisons</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../jaf-comparison/">JAF vs Dotsuite</a>
+                  </li>
               </ul>
       </div>
     </div>
@@ -62,14 +147,15 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="..">The Dot Notation Universe</a>
+          <a href="..">dotsuite - The Dot Notation Universe</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Proposal: The Three Pillars of the dot Ecosystem</li>
+          <li class="breadcrumb-item">Architecture</li>
+      <li class="breadcrumb-item active">Collections Pillar</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -78,18 +164,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="proposal-the-three-pillars-of-the-dot-ecosystem">Proposal: The Three Pillars of the <code>dot</code> Ecosystem</h1>
+                <h1 id="proposal-the-three-pillars-of-the-dot-ecosystem">Proposal: The Three Pillars of the <code>dot</code> Ecosystem<a class="headerlink" href="#proposal-the-three-pillars-of-the-dot-ecosystem" title="Permanent link">&para;</a></h1>
 <p>This document proposes a formal, three-pillar structure for the <code>dot</code> ecosystem. This model clarifies the purpose of each tool, establishes a clear pedagogical progression for users, and provides a robust framework for future development.</p>
-<h2 id="the-core-idea-depth-truth-and-breadth">The Core Idea: Depth, Truth, and Breadth</h2>
+<h2 id="the-core-idea-depth-truth-and-breadth">The Core Idea: Depth, Truth, and Breadth<a class="headerlink" href="#the-core-idea-depth-truth-and-breadth" title="Permanent link">&para;</a></h2>
 <p>The <code>dot</code> ecosystem is organized into three distinct pillars, each answering a fundamental question about data:</p>
 <ol>
 <li><strong>The Addressing Pillar (Depth):</strong> Answers <strong>"Where is the data?"</strong> within a <em>single document</em>.</li>
-<li><strong>The Logic Pillar (Truth):</strong> Answers <strong>"Is this true?"</strong> about a <em>single document</em>.</li>
+<li><strong>The Truth Pillar:</strong> Answers <strong>"Is this true?"</strong> about a <em>single document</em>.</li>
 <li><strong>The Collections Pillar (Breadth):</strong> Operates on a <em>collection of documents</em> to answer <strong>"Which documents?"</strong> or <strong>"What is the new collection?"</strong>.</li>
 </ol>
-<h2 id="the-ecosystem-diagram">The Ecosystem Diagram</h2>
+<h2 id="the-ecosystem-diagram">The Ecosystem Diagram<a class="headerlink" href="#the-ecosystem-diagram" title="Permanent link">&para;</a></h2>
 <p>This diagram provides a high-level overview of the entire ecosystem, showing the tools within each pillar and their progression from simple to powerful.</p>
-<pre><code>                                      +-------------------------+
+<div class="highlight"><pre><span></span><code>                                      +-------------------------+
                                       |   The `dot` Ecosystem   |
                                       +-------------------------+
                                                  |
@@ -108,8 +194,8 @@
         Advanced: `dotselect`              `dotany`/`dotall`        `dotmod` (doc→doc)   `dotpipe` (doc→any)
                     |                            |                        |                   |
         Engine:   `dotpath`                  `dotquery`              `dotbatch` (batch/txn)
-</code></pre>
-<h3 id="pillar-1-the-addressing-pillar-depth">Pillar 1: The Addressing Pillar (Depth)</h3>
+</code></pre></div>
+<h3 id="pillar-1-the-addressing-pillar-depth">Pillar 1: The Addressing Pillar (Depth)<a class="headerlink" href="#pillar-1-the-addressing-pillar-depth" title="Permanent link">&para;</a></h3>
 <p>This pillar focuses on finding and extracting data from within a single document.</p>
 <ol>
 <li><strong><code>dotget</code> (Simple):</strong> The entry point. Extracts a value from a single, exact path.</li>
@@ -117,7 +203,7 @@
 <li><strong><code>dotselect</code> (Advanced):</strong> The workhorse. Uses the full <code>dotpath</code> engine to perform complex selections with filters, slices, and descendants.</li>
 <li><strong><code>dotpath</code> (Engine):</strong> The underlying path-parsing and resolution engine that is extensible and compositional, allowing for custom path segments and logic. The simpler operations (<code>dotget</code>, <code>dotstar</code>, <code>dotselect</code>) should not be built on top of <code>dotpath</code>, but implemented as simply as possible to avoid unnecessary complexity. However, conceptually, <code>dotpath</code> is the "Turing-complete" addressing engine of the ecosystem, allowing for arbitrary path expressions and logic.</li>
 </ol>
-<h3 id="pillar-2-the-logic-pillar-truth">Pillar 2: The Logic Pillar (Truth)</h3>
+<h3 id="pillar-2-the-truth-pillar">Pillar 2: The Truth Pillar<a class="headerlink" href="#pillar-2-the-truth-pillar" title="Permanent link">&para;</a></h3>
 <p>This pillar focuses on asking true/false questions about a single document.</p>
 <ol>
 <li>
@@ -129,7 +215,7 @@
 <li><strong><code>dotany</code>/<code>dotall</code> (Quantifiers):</strong> The bridge to complexity. Applies a simple condition to multiple values found by a <code>dotstar</code> path.</li>
 <li><strong><code>dotquery</code> (Engine):</strong> The complete logic engine. Allows for building complex, compositional queries with AND/OR/NOT logic.</li>
 </ol>
-<h3 id="pillar-3-the-transformation-pillar-shape">Pillar 3: The Transformation Pillar (Shape)</h3>
+<h3 id="pillar-3-the-transformation-pillar-shape">Pillar 3: The Transformation Pillar (Shape)<a class="headerlink" href="#pillar-3-the-transformation-pillar-shape" title="Permanent link">&para;</a></h3>
 <p>This pillar focuses on transforming the <em>shape</em> of a single document, answering <strong>"How does it change?"</strong>. All operations are immutable and compositional.</p>
 <ul>
 <li><strong><code>dotpluck</code> (Simple):</strong> Extracts zero or more values from a document. If the path is exact, returns a single value or none; if the path includes wildcards, returns a list of all matches.</li>
@@ -138,9 +224,9 @@
 <li><strong><code>dotbatch</code> (Transactional):</strong> Applies a batch of modifications as a single transaction, enabling all-or-nothing guarantees and complex, multi-step updates. <code>dotbatch</code> can leverage both <code>dotmod</code> and <code>dotpipe</code> operations, and may support advanced features like rollback, validation, or atomicity.</li>
 </ul>
 <hr />
-<h2 id="collections-lifting-the-pillars-to-streams">Collections: Lifting the Pillars to Streams</h2>
+<h2 id="collections-lifting-the-pillars-to-streams">Collections: Lifting the Pillars to Streams<a class="headerlink" href="#collections-lifting-the-pillars-to-streams" title="Permanent link">&para;</a></h2>
 <p>The Collections layer extends the three pillars from single documents to <em>streams</em> or <em>sets</em> of documents (e.g., JSONL). It is divided into two wings:</p>
-<pre><code>+-----------------------------+
+<div class="highlight"><pre><span></span><code>+-----------------------------+
 |   Collections (Breadth)     |
 +-----------------------------+
            |
@@ -156,7 +242,7 @@ Boolean Wing   Transforming Wing
 `dotfilter`         |
                     |
                 `dotrelate` (multi-collection, highest abstraction)
-</code></pre>
+</code></pre></div>
 <ul>
 <li>The <strong>Boolean Wing</strong> is essential for collections: filtering, searching, and logical operations over sets of documents. Boolean algebra on collections is homomorphic to boolean logic on queries: e.g., the intersection of subsets x₁ and x₂ (from queries q₁ and q₂) is the same as applying (q₁ AND q₂) to the original collection.</li>
 <li>The <strong>Transforming Wing</strong> includes repeated application of single-document transforms (dotmod, dotpipe, dotbatch, dotpluck, etc.), but the highest-level operation is <strong>dotrelate</strong>, which operates over multiple collections and enables relational algebra (joins, unions, etc.).</li>
@@ -164,7 +250,7 @@ Boolean Wing   Transforming Wing
 <li><code>dotbatch</code> at the collection level enables transactional or efficient batch operations across the entire set.</li>
 </ul>
 <hr />
-<h2 id="summary-table">Summary Table</h2>
+<h2 id="summary-table">Summary Table<a class="headerlink" href="#summary-table" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -192,7 +278,7 @@ Boolean Wing   Transforming Wing
 </tbody>
 </table>
 <hr />
-<h2 id="design-principles">Design Principles</h2>
+<h2 id="design-principles">Design Principles<a class="headerlink" href="#design-principles" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Compositionality:</strong> All operations can be composed, both within and across pillars.</li>
 <li><strong>Immutability:</strong> All transformations are immutable; original data is never mutated.</li>
@@ -204,6 +290,10 @@ Boolean Wing   Transforming Wing
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../dot-formalism/" class="btn btn-neutral float-left" title="Formal Specification"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../dot-notation-universe/" class="btn btn-neutral float-right" title="Universe Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -225,6 +315,10 @@ Boolean Wing   Transforming Wing
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../dot-formalism/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../dot-notation-universe/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

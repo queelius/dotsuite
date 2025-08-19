@@ -3,24 +3,28 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Your Name" /><link rel="canonical" href="https://yourdocs.url/philosophy/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>The Philosophy of the Dot Universe - The Dot Notation Universe</title>
+    <title>Philosophy - dotsuite - The Dot Notation Universe</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "The Philosophy of the Dot Universe";
+        var mkdocs_page_name = "Philosophy";
         var mkdocs_page_input_path = "philosophy.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/philosophy/";
       </script>
     
     <!--[if lt IE 9]>
       <script src="../js/html5shiv.min.js"></script>
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
       <script>hljs.highlightAll();</script> 
 </head>
 
@@ -30,8 +34,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href=".." class="icon icon-home"> The Dot Notation Universe
-        </a><div role="search">
+          <a href=".." class="icon icon-home"> dotsuite - The Dot Notation Universe
+        </a>
+        <div class="version">
+          0.1.0
+        </div><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
@@ -40,15 +47,16 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="..">Welcome to the Dot Notation Universe</a>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting Started</a>
                 </li>
               </ul>
+              <p class="caption"><span class="caption-text">Core Concepts</span></p>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">The Philosophy of the Dot Universe</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Philosophy</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#part-i-the-single-document-the-axis-of-depth">Part I: The Single Document - The Axis of "Depth"</a>
         <ul>
@@ -69,11 +77,68 @@
     <li class="toctree-l2"><a class="reference internal" href="#the-big-picture-a-unified-architecture">The Big Picture: A Unified Architecture</a>
     </li>
     </ul>
-                </li>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ecosystem/">Ecosystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dot-formalism/">Formal Specification</a>
+                  </li>
               </ul>
+              <p class="caption"><span class="caption-text">Architecture</span></p>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../ecosystem/">The dot Ecosystem: A Tour</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../proposal-collections-pillar/">Collections Pillar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dot-notation-universe/">Universe Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Depth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/depth/dotget/">dotget</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/depth/dotstar/">dotstar</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Truth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/truth/dotexists/">dotexists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/truth/dotequals/">dotequals</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/truth/dotany/">dotany</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/truth/dotall/">dotall</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/truth/dotquery/">dotquery</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Shape Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/shape/dotmod/">dotmod</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/shape/dotbatch/">dotbatch</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/shape/dotpipe/">dotpipe</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/shape/dotpluck/">dotpluck</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Collections Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/collections/dotfilter/">dotfilter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/collections/dotrelate/">dotrelate</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Comparisons</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../jaf-comparison/">JAF vs Dotsuite</a>
+                  </li>
               </ul>
       </div>
     </div>
@@ -82,14 +147,15 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="..">The Dot Notation Universe</a>
+          <a href="..">dotsuite - The Dot Notation Universe</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">The Philosophy of the Dot Universe</li>
+          <li class="breadcrumb-item">Core Concepts</li>
+      <li class="breadcrumb-item active">Philosophy</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -98,12 +164,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="the-philosophy-of-the-dot-universe">The Philosophy of the Dot Universe</h1>
+                <h1 id="the-philosophy-of-the-dot-universe">The Philosophy of the Dot Universe<a class="headerlink" href="#the-philosophy-of-the-dot-universe" title="Permanent link">&para;</a></h1>
 <p>It always starts with a simple problem. You have a nested dictionary or a JSON payload, and you need to get a value buried deep inside. You write <code>data['user']['contacts'][0]['email']</code> and you pray that no key or index is missing along the way, lest your program crash. This leads to brittle, defensive code.</p>
 <p>The first, obvious solution is a helper function. This is where our story begins. What started as a single, humble function, <code>dotget</code>, evolved through a series of questions and insights into a complete, coherent, and powerful ecosystem for manipulating data structures. This is the story of that evolution—a journey in API design guided by the principles of purity, pedagogy, and the principle of least power.</p>
-<h2 id="part-i-the-single-document-the-axis-of-depth">Part I: The Single Document - The Axis of "Depth"</h2>
+<h2 id="part-i-the-single-document-the-axis-of-depth">Part I: The Single Document - The Axis of "Depth"<a class="headerlink" href="#part-i-the-single-document-the-axis-of-depth" title="Permanent link">&para;</a></h2>
 <p>Mastering operations <em>inside</em> a single, complex document is the foundation of the entire ecosystem. We discovered that this "per-document intelligence" rests on two fundamental axes: <strong>Addressing</strong> (finding data) and <strong>Action</strong> (changing data).</p>
-<h3 id="the-addressing-layer-dotpath">The Addressing Layer (<code>dotpath</code>)</h3>
+<h3 id="the-addressing-layer-dotpath">The Addressing Layer (<code>dotpath</code>)<a class="headerlink" href="#the-addressing-layer-dotpath" title="Permanent link">&para;</a></h3>
 <p>This is the bedrock. It answers the question: <strong>"WHAT is the value at a given location?"</strong></p>
 <p>The entire addressing layer is consolidated into a single, powerful, and extensible engine: <code>dotpath</code>. It is not just a tool, but a simple, extensible machine. Its intelligence lives within small, self-contained, "expert" components (<code>PathSegment</code> classes) that can be added, removed, or replaced.</p>
 <p><code>dotpath</code> provides a rich, JSONPath-inspired syntax with features like:
@@ -113,36 +179,36 @@
 - <strong>Recursive descent</strong>: <code>**.name</code>
 - <strong>Filters/Predicates</strong>: <code>books[?(@.price &lt; 10)]</code>
 - <strong>Extensibility</strong>: The engine can be taught new syntax, like fuzzy key matching, by registering new segment parsers.</p>
-<p>All other tools in the ecosystem that need to find data (<code>dotquery</code>, <code>dotmod</code>, etc.) use <code>dotpath</code> as their internal engine.</p>
-<h3 id="the-action-layer-manipulation">The Action Layer (Manipulation)</h3>
+<p>While <code>dotpath</code> is powerful, many tools in the ecosystem intentionally remain simple and self-contained. For example, <code>dotget</code> is just a few lines of code you're encouraged to copy rather than import - embodying the "steal this code" philosophy.</p>
+<h3 id="the-action-layer-manipulation">The Action Layer (Manipulation)<a class="headerlink" href="#the-action-layer-manipulation" title="Permanent link">&para;</a></h3>
 <p>This pillar answers the question: <strong>"HOW should this document be changed?"</strong> It uses the Addressing Layer (<code>dotpath</code>) to find <em>where</em> to act. It is built on the principle of immutability—always returning a modified copy.</p>
 <ul>
 <li><strong><code>dotmod</code></strong>: Provides the verbs for direct, single modifications (<code>set</code>, <code>delete</code>).</li>
 <li><strong><code>dotbatch</code></strong>: Provides the transactional capability to apply a sequence of <code>dotmod</code> changes atomically.</li>
 <li><strong><code>dotpipe</code></strong>: Transforms a document's structure, reshaping it into something new (e.g., creating a simplified "view model").</li>
 </ul>
-<h2 id="part-ii-collections-of-documents-the-axis-of-breadth">Part II: Collections of Documents - The Axis of "Breadth"</h2>
+<h2 id="part-ii-collections-of-documents-the-axis-of-breadth">Part II: Collections of Documents - The Axis of "Breadth"<a class="headerlink" href="#part-ii-collections-of-documents-the-axis-of-breadth" title="Permanent link">&para;</a></h2>
 <p>With a complete toolkit for single documents, we can now operate on collections, often represented as a stream of documents like in a <strong>JSONL</strong> file.</p>
-<h3 id="dotquery-a-logic-engine-for-collections"><code>dotquery</code>: A Logic Engine for Collections</h3>
+<h3 id="dotquery-a-logic-engine-for-collections"><code>dotquery</code>: A Logic Engine for Collections<a class="headerlink" href="#dotquery-a-logic-engine-for-collections" title="Permanent link">&para;</a></h3>
 <p><code>dotquery</code> filters a collection. It answers the question: <strong>"Which documents in this collection match a set of logical rules?"</strong></p>
 <p>Its power comes from using <code>dotpath</code> to extract values and then applying logical conditions to them. It features a lazy, chainable <code>QuerySet</code> API that allows for building complex queries efficiently from the command line.</p>
-<pre><code class="language-bash"># Find all books that are either cheap (under 10) or written by &quot;Tolkien&quot;, 
-# and are in stock, then resolve the query to print the matching books.
-$ dotquery query &quot;(less price 10 or equals author 'Tolkien')&quot; books.json \
-  | dotquery and &quot;equals in_stock true&quot; \
-  | dotquery resolve
-</code></pre>
-<h3 id="dotrelate-a-relational-algebra-for-collections"><code>dotrelate</code>: A Relational Algebra for Collections</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Find all books that are either cheap (under 10) or written by &quot;Tolkien&quot;, </span>
+<span class="c1"># and are in stock, then resolve the query to print the matching books.</span>
+$<span class="w"> </span>dotquery<span class="w"> </span>query<span class="w"> </span><span class="s2">&quot;(less price 10 or equals author &#39;Tolkien&#39;)&quot;</span><span class="w"> </span>books.json<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>dotquery<span class="w"> </span>and<span class="w"> </span><span class="s2">&quot;equals in_stock true&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>dotquery<span class="w"> </span>resolve
+</code></pre></div>
+<h3 id="dotrelate-a-relational-algebra-for-collections"><code>dotrelate</code>: A Relational Algebra for Collections<a class="headerlink" href="#dotrelate-a-relational-algebra-for-collections" title="Permanent link">&para;</a></h3>
 <p>While <code>dotquery</code> filters a collection, <code>dotrelate</code> transforms and combines multiple collections. It answers: <strong>"How can these distinct collections be joined to create new, enriched data?"</strong></p>
 <p>The core operation is the <code>join</code>, which combines documents from two collections based on a shared key. It also supports other relational operations like <code>union</code>, <code>diff</code>, and <code>project</code>.</p>
-<pre><code class="language-bash"># Enrich user data with their orders via a left join
-$ dotrelate join --left-on=&quot;id&quot; --right-on=&quot;user_id&quot; --how=&quot;left&quot; users.jsonl orders.jsonl
-</code></pre>
-<h2 id="the-big-picture-a-unified-architecture">The Big Picture: A Unified Architecture</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Enrich user data with their orders via a left join</span>
+$<span class="w"> </span>dotrelate<span class="w"> </span>join<span class="w"> </span>--left-on<span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="w"> </span>--right-on<span class="o">=</span><span class="s2">&quot;user_id&quot;</span><span class="w"> </span>--how<span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="w"> </span>users.jsonl<span class="w"> </span>orders.jsonl
+</code></pre></div>
+<h2 id="the-big-picture-a-unified-architecture">The Big Picture: A Unified Architecture<a class="headerlink" href="#the-big-picture-a-unified-architecture" title="Permanent link">&para;</a></h2>
 <p>This journey reveals a coherent universe of tools, underpinned by a dual API (programmatic for developers, declarative CLI for users) and a philosophy of clean, single-purpose components.</p>
-<pre><code class="language-mermaid">graph TD
+<div class="highlight"><pre><span></span><code>graph TD
     subgraph The_Dot_Universe [&quot;The Dot Notation Universe&quot;]
-        subgraph Single_Doc [&quot;Part I: Per-Document Intelligence ('Depth')&quot;]
+        subgraph Single_Doc [&quot;Part I: Per-Document Intelligence (&#39;Depth&#39;)&quot;]
             direction TB
 
             subgraph Addressing_Layer [&quot;Addressing Layer&quot;]
@@ -155,7 +221,7 @@ $ dotrelate join --left-on=&quot;id&quot; --right-on=&quot;user_id&quot; --how=&
 
         end
 
-        subgraph Collection_Ops [&quot;Part II: Collection Operations ('Breadth')&quot;]
+        subgraph Collection_Ops [&quot;Part II: Collection Operations (&#39;Breadth&#39;)&quot;]
             direction TB
             subgraph Filter_Branch [&quot;Filtering / Logic&quot;]
                 dotquery(&quot;dotquery&quot;)
@@ -169,13 +235,13 @@ $ dotrelate join --left-on=&quot;id&quot; --right-on=&quot;user_id&quot; --how=&
         dotpath -- &quot;Provides paths for&quot; --&gt; Filter_Branch
         Filter_Branch -- &quot;Filters collections for&quot; --&gt; Relate_Branch
     end
-</code></pre>
+</code></pre></div>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../getting-started/" class="btn btn-neutral float-left" title="Getting Started"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../ecosystem/" class="btn btn-neutral float-right" title="The dot Ecosystem: A Tour">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../ecosystem/" class="btn btn-neutral float-right" title="Ecosystem">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>

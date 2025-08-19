@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Your Name" /><link rel="canonical" href="https://yourdocs.url/tools/depth/dotget/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>dotget - dotsuite - The Dot Notation Universe</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "dotget";
+        var mkdocs_page_input_path = "tools/depth/dotget.md";
+        var mkdocs_page_url = "/tools/depth/dotget/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> dotsuite - The Dot Notation Universe
+        </a>
+        <div class="version">
+          0.1.0
+        </div><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../getting-started/">Getting Started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Concepts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../philosophy/">Philosophy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../ecosystem/">Ecosystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dot-formalism/">Formal Specification</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Architecture</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../proposal-collections-pillar/">Collections Pillar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dot-notation-universe/">Universe Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tools</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" >Depth Pillar</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">dotget</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#basic-usage">Basic Usage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#safe-navigation">Safe Navigation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#list-access">List Access</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mixed-structures">Mixed Structures</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#real-world-examples">Real-World Examples</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#api-response-parsing">API Response Parsing</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#configuration-access">Configuration Access</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#json-data-processing">JSON Data Processing</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#design-philosophy">Design Philosophy</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#performance">Performance</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#related-tools">Related Tools</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dotstar/">dotstar</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Truth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotexists/">dotexists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotequals/">dotequals</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotany/">dotany</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotall/">dotall</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotquery/">dotquery</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Shape Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../shape/dotmod/">dotmod</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../shape/dotbatch/">dotbatch</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../shape/dotpipe/">dotpipe</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../shape/dotpluck/">dotpluck</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Collections Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../collections/dotfilter/">dotfilter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../collections/dotrelate/">dotrelate</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Comparisons</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../jaf-comparison/">JAF vs Dotsuite</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">dotsuite - The Dot Notation Universe</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Tools</li>
+          <li class="breadcrumb-item">Depth Pillar</li>
+      <li class="breadcrumb-item active">dotget</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="dotget">dotget<a class="headerlink" href="#dotget" title="Permanent link">&para;</a></h1>
+<p><strong>Simple, exact addressing for nested data</strong></p>
+<p>The foundational tool of the Depth pillar, <code>dotget</code> safely extracts values from nested data structures using dot notation paths.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p><code>dotget</code> is the tool that started it all - a simple function to safely navigate nested dictionaries and lists without worrying about KeyErrors or IndexErrors.</p>
+<h2 id="basic-usage">Basic Usage<a class="headerlink" href="#basic-usage" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">depth.dotget</span><span class="w"> </span><span class="kn">import</span> <span class="n">get</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;contacts&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;alice@example.com&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;phone&quot;</span><span class="p">:</span> <span class="s2">&quot;+1-555-0100&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Get nested values</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;user.name&quot;</span><span class="p">)</span>                    <span class="c1"># &quot;Alice&quot;</span>
+<span class="n">email</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;user.contacts.email&quot;</span><span class="p">)</span>         <span class="c1"># &quot;alice@example.com&quot;</span>
+<span class="n">missing</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;user.contacts.fax&quot;</span><span class="p">)</span>         <span class="c1"># None</span>
+</code></pre></div>
+<h2 id="safe-navigation">Safe Navigation<a class="headerlink" href="#safe-navigation" title="Permanent link">&para;</a></h2>
+<p>Unlike direct dictionary access, <code>dotget</code> never raises exceptions:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># This would raise KeyError:</span>
+<span class="c1"># value = data[&quot;user&quot;][&quot;settings&quot;][&quot;theme&quot;]</span>
+
+<span class="c1"># This returns None safely:</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;user.settings.theme&quot;</span><span class="p">)</span>  <span class="c1"># None</span>
+</code></pre></div>
+<h2 id="list-access">List Access<a class="headerlink" href="#list-access" title="Permanent link">&para;</a></h2>
+<p>Navigate through lists using numeric indices:</p>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;users&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Charlie&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">35</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Access by index</span>
+<span class="n">first_user</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;users.0.name&quot;</span><span class="p">)</span>      <span class="c1"># &quot;Alice&quot;</span>
+<span class="n">second_age</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;users.1.age&quot;</span><span class="p">)</span>       <span class="c1"># 25</span>
+
+<span class="c1"># Negative indices work too</span>
+<span class="n">last_user</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;users.-1.name&quot;</span><span class="p">)</span>      <span class="c1"># &quot;Charlie&quot;</span>
+
+<span class="c1"># Out of bounds returns None</span>
+<span class="n">missing</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;users.10.name&quot;</span><span class="p">)</span>        <span class="c1"># None</span>
+</code></pre></div>
+<h2 id="mixed-structures">Mixed Structures<a class="headerlink" href="#mixed-structures" title="Permanent link">&para;</a></h2>
+<p>Navigate seamlessly through mixed dictionaries and lists:</p>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;company&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;departments&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Engineering&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;teams&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Backend&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+                    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frontend&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Deep navigation</span>
+<span class="n">team_size</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;company.departments.0.teams.1.size&quot;</span><span class="p">)</span>  <span class="c1"># 3</span>
+</code></pre></div>
+<h2 id="real-world-examples">Real-World Examples<a class="headerlink" href="#real-world-examples" title="Permanent link">&para;</a></h2>
+<h3 id="api-response-parsing">API Response Parsing<a class="headerlink" href="#api-response-parsing" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
+            <span class="s2">&quot;profile&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="s2">&quot;Smith&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;2024-01-01T12:00:00Z&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">user_id</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s2">&quot;data.user.id&quot;</span><span class="p">)</span>           <span class="c1"># 123</span>
+<span class="n">full_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">get</span><span class="p">(</span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;data.user.profile.firstName&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">get</span><span class="p">(</span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;data.user.profile.lastName&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
+<h3 id="configuration-access">Configuration Access<a class="headerlink" href="#configuration-access" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;database&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;primary&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;db1.example.com&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="mi">5432</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Safe configuration access with defaults</span>
+<span class="n">db_host</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;database.primary.host&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;localhost&quot;</span>
+<span class="n">db_port</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;database.primary.port&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">5432</span>
+<span class="n">db_user</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;database.primary.user&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;postgres&quot;</span>
+</code></pre></div>
+<h3 id="json-data-processing">JSON Data Processing<a class="headerlink" href="#json-data-processing" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="c1"># Load JSON data</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="c1"># Safely extract nested values</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>  <span class="c1"># Don&#39;t know how many items</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;items.</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">.name&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">break</span>  <span class="c1"># No more items</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="design-philosophy">Design Philosophy<a class="headerlink" href="#design-philosophy" title="Permanent link">&para;</a></h2>
+<p><code>dotget</code> embodies the principle of <strong>graceful degradation</strong>:
+- Never raises exceptions for missing paths
+- Returns <code>None</code> for any navigation failure
+- Simple, predictable behavior
+- Zero dependencies</p>
+<h2 id="performance">Performance<a class="headerlink" href="#performance" title="Permanent link">&para;</a></h2>
+<p><code>dotget</code> is optimized for simplicity and safety, not speed:
+- O(n) where n is the depth of the path
+- Minimal memory overhead
+- No caching or memoization</p>
+<p>For performance-critical applications with known schemas, direct dictionary access is faster.</p>
+<h2 id="related-tools">Related Tools<a class="headerlink" href="#related-tools" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="../dotstar/">dotstar</a></strong> - Pattern matching with wildcards</li>
+<li><strong><a href="../../truth/dotexists/">dotexists</a></strong> - Check if path exists</li>
+<li><strong><a href="../../shape/dotmod/">dotmod</a></strong> - Modify values at paths</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../../dot-notation-universe/" class="btn btn-neutral float-left" title="Universe Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../dotstar/" class="btn btn-neutral float-right" title="dotstar">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../../dot-notation-universe/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../dotstar/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

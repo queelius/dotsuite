@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Your Name" /><link rel="canonical" href="https://yourdocs.url/tools/shape/dotbatch/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>dotbatch - dotsuite - The Dot Notation Universe</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "dotbatch";
+        var mkdocs_page_input_path = "tools/shape/dotbatch.md";
+        var mkdocs_page_url = "/tools/shape/dotbatch/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> dotsuite - The Dot Notation Universe
+        </a>
+        <div class="version">
+          0.1.0
+        </div><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../getting-started/">Getting Started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Concepts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../philosophy/">Philosophy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../ecosystem/">Ecosystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dot-formalism/">Formal Specification</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Architecture</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../proposal-collections-pillar/">Collections Pillar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dot-notation-universe/">Universe Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tools</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" >Depth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../depth/dotget/">dotget</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../depth/dotstar/">dotstar</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Truth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotexists/">dotexists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotequals/">dotequals</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotany/">dotany</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotall/">dotall</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotquery/">dotquery</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Shape Pillar</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../dotmod/">dotmod</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">dotbatch</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#core-concepts">Core Concepts</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#atomic-transactions">Atomic Transactions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#operation-types">Operation Types</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#basic-operations">Basic Operations</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#conditional-operations">Conditional Operations</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#validation-and-constraints">Validation and Constraints</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#real-world-examples">Real-World Examples</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#bank-transfer-classic-two-phase-commit">Bank Transfer (Classic Two-Phase Commit)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#shopping-cart-checkout">Shopping Cart Checkout</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#configuration-update-with-rollback">Configuration Update with Rollback</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#transaction-log">Transaction Log</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nested-batches">Nested Batches</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mathematical-foundation">Mathematical Foundation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#performance-considerations">Performance Considerations</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#related-tools">Related Tools</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dotpipe/">dotpipe</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dotpluck/">dotpluck</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Collections Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../collections/dotfilter/">dotfilter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../collections/dotrelate/">dotrelate</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Comparisons</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../jaf-comparison/">JAF vs Dotsuite</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">dotsuite - The Dot Notation Universe</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Tools</li>
+          <li class="breadcrumb-item">Shape Pillar</li>
+      <li class="breadcrumb-item active">dotbatch</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="dotbatch">dotbatch<a class="headerlink" href="#dotbatch" title="Permanent link">&para;</a></h1>
+<p><strong>Atomic batch operations with rollback support</strong></p>
+<p>Part of the Shape pillar, <code>dotbatch</code> provides transactional semantics for multiple modifications, ensuring all changes succeed or none are applied.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p><code>dotbatch</code> brings database-like ACID properties to nested data structure modifications. It executes a batch of operations atomically - if any operation fails, all changes are rolled back.</p>
+<h2 id="core-concepts">Core Concepts<a class="headerlink" href="#core-concepts" title="Permanent link">&para;</a></h2>
+<h3 id="atomic-transactions">Atomic Transactions<a class="headerlink" href="#atomic-transactions" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">shape.dotbatch</span><span class="w"> </span><span class="kn">import</span> <span class="n">Batch</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;account&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;balance&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="s2">&quot;transactions&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Create a batch of operations</span>
+<span class="n">batch</span> <span class="o">=</span> <span class="n">Batch</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;account.balance&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;account.transactions&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;withdrawal&quot;</span><span class="p">})</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;account.last_modified&quot;</span><span class="p">,</span> <span class="s2">&quot;2024-01-01&quot;</span><span class="p">)</span>
+
+<span class="c1"># Apply all at once (atomic)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">batch</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+<span class="c1"># If any operation would fail, nothing is applied</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">batch</span> <span class="o">=</span> <span class="n">Batch</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">batch</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;account.balance&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># Would fail validation</span>
+    <span class="n">batch</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;required.field&quot;</span><span class="p">)</span>      <span class="c1"># Would fail</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">batch</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>              <span class="c1"># Rolls back, returns original</span>
+<span class="k">except</span> <span class="n">BatchError</span><span class="p">:</span>
+    <span class="c1"># Original data unchanged</span>
+    <span class="k">pass</span>
+</code></pre></div>
+<h2 id="operation-types">Operation Types<a class="headerlink" href="#operation-types" title="Permanent link">&para;</a></h2>
+<h3 id="basic-operations">Basic Operations<a class="headerlink" href="#basic-operations" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">batch</span> <span class="o">=</span> <span class="n">Batch</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Set values</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;user.name&quot;</span><span class="p">,</span> <span class="s2">&quot;Alice&quot;</span><span class="p">)</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;user.email&quot;</span><span class="p">,</span> <span class="s2">&quot;alice@example.com&quot;</span><span class="p">)</span>
+
+<span class="c1"># Update with functions</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;counter&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;prices&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mf">1.1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">p</span><span class="p">])</span>
+
+<span class="c1"># Delete paths</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;temp.data&quot;</span><span class="p">)</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;user.old_field&quot;</span><span class="p">)</span>
+
+<span class="c1"># Append to lists</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;logs&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">now</span><span class="p">(),</span> <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;login&quot;</span><span class="p">})</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="s2">&quot;tags&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;updated&quot;</span><span class="p">])</span>
+
+<span class="c1"># Apply all</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">batch</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="conditional-operations">Conditional Operations<a class="headerlink" href="#conditional-operations" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">batch</span> <span class="o">=</span> <span class="n">Batch</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Only apply if condition is met</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">set_if</span><span class="p">(</span><span class="s2">&quot;user.role&quot;</span><span class="p">,</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">get</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;user.verified&quot;</span><span class="p">))</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">delete_if</span><span class="p">(</span><span class="s2">&quot;cache&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">get</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;cache.timestamp&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3600</span><span class="p">)</span>
+
+<span class="c1"># Conditional batch execution</span>
+<span class="k">if</span> <span class="n">should_update</span><span class="p">:</span>
+    <span class="n">batch</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">batch</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>  <span class="c1"># Explicitly discard changes</span>
+</code></pre></div>
+<h2 id="validation-and-constraints">Validation and Constraints<a class="headerlink" href="#validation-and-constraints" title="Permanent link">&para;</a></h2>
+<p>Add validation to ensure data integrity:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">shape.dotbatch</span><span class="w"> </span><span class="kn">import</span> <span class="n">Batch</span><span class="p">,</span> <span class="n">ValidationError</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">validate_balance</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ensure balance never goes negative.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Balance cannot be negative: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span>
+
+<span class="n">batch</span> <span class="o">=</span> <span class="n">Batch</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;account.balance&quot;</span><span class="p">,</span> <span class="n">new_balance</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="n">validate_balance</span><span class="p">)</span>
+
+<span class="c1"># Or add global validation</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">add_validator</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;account.balance&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="real-world-examples">Real-World Examples<a class="headerlink" href="#real-world-examples" title="Permanent link">&para;</a></h2>
+<h3 id="bank-transfer-classic-two-phase-commit">Bank Transfer (Classic Two-Phase Commit)<a class="headerlink" href="#bank-transfer-classic-two-phase-commit" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">transfer_funds</span><span class="p">(</span><span class="n">accounts</span><span class="p">,</span> <span class="n">from_id</span><span class="p">,</span> <span class="n">to_id</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Transfer funds between accounts atomically.&quot;&quot;&quot;</span>
+    <span class="n">batch</span> <span class="o">=</span> <span class="n">Batch</span><span class="p">(</span><span class="n">accounts</span><span class="p">)</span>
+
+    <span class="c1"># Debit from source</span>
+    <span class="n">from_balance</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">accounts</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">from_id</span><span class="si">}</span><span class="s2">.balance&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">from_balance</span> <span class="o">&lt;</span> <span class="n">amount</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">InsufficientFunds</span><span class="p">()</span>
+
+    <span class="n">batch</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">from_id</span><span class="si">}</span><span class="s2">.balance&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">b</span><span class="p">:</span> <span class="n">b</span> <span class="o">-</span> <span class="n">amount</span><span class="p">)</span>
+    <span class="n">batch</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">from_id</span><span class="si">}</span><span class="s2">.transactions&quot;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;debit&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="o">-</span><span class="n">amount</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="n">to_id</span><span class="p">,</span>
+        <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">now</span><span class="p">()</span>
+    <span class="p">})</span>
+
+    <span class="c1"># Credit to destination</span>
+    <span class="n">batch</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">to_id</span><span class="si">}</span><span class="s2">.balance&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">b</span><span class="p">:</span> <span class="n">b</span> <span class="o">+</span> <span class="n">amount</span><span class="p">)</span>
+    <span class="n">batch</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">to_id</span><span class="si">}</span><span class="s2">.transactions&quot;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;credit&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="n">amount</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="n">from_id</span><span class="p">,</span>
+        <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">now</span><span class="p">()</span>
+    <span class="p">})</span>
+
+    <span class="c1"># Atomic commit - both succeed or both fail</span>
+    <span class="k">return</span> <span class="n">batch</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="shopping-cart-checkout">Shopping Cart Checkout<a class="headerlink" href="#shopping-cart-checkout" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">checkout_cart</span><span class="p">(</span><span class="n">store_data</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">cart_items</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Process checkout atomically.&quot;&quot;&quot;</span>
+    <span class="n">batch</span> <span class="o">=</span> <span class="n">Batch</span><span class="p">(</span><span class="n">store_data</span><span class="p">)</span>
+
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">cart_items</span><span class="p">:</span>
+        <span class="n">product_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;products.</span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;product_id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="c1"># Check inventory</span>
+        <span class="n">current_stock</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">store_data</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">product_path</span><span class="si">}</span><span class="s2">.stock&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">current_stock</span> <span class="o">&lt;</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;quantity&#39;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="n">OutOfStock</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;product_id&#39;</span><span class="p">])</span>
+
+        <span class="c1"># Update inventory</span>
+        <span class="n">batch</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">product_path</span><span class="si">}</span><span class="s2">.stock&quot;</span><span class="p">,</span> 
+                    <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span> <span class="o">-</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;quantity&#39;</span><span class="p">])</span>
+
+        <span class="c1"># Track sales</span>
+        <span class="n">batch</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">product_path</span><span class="si">}</span><span class="s2">.sold&quot;</span><span class="p">,</span> 
+                    <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span> <span class="o">+</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;quantity&#39;</span><span class="p">])</span>
+
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;quantity&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">get</span><span class="p">(</span><span class="n">store_data</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">product_path</span><span class="si">}</span><span class="s2">.price&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Create order</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">generate_id</span><span class="p">(),</span>
+        <span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="n">user_id</span><span class="p">,</span>
+        <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="n">cart_items</span><span class="p">,</span>
+        <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="n">total</span><span class="p">,</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;pending&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="n">now</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="n">batch</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;orders&quot;</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+    <span class="n">batch</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;users.</span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">.cart&quot;</span><span class="p">,</span> <span class="p">[])</span>  <span class="c1"># Clear cart</span>
+
+    <span class="c1"># All succeed or all fail</span>
+    <span class="k">return</span> <span class="n">batch</span><span class="o">.</span><span class="n">commit</span><span class="p">(),</span> <span class="n">order</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+</code></pre></div>
+<h3 id="configuration-update-with-rollback">Configuration Update with Rollback<a class="headerlink" href="#configuration-update-with-rollback" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">update_config</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">changes</span><span class="p">,</span> <span class="n">test_fn</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Update configuration with automatic rollback on failure.&quot;&quot;&quot;</span>
+    <span class="n">batch</span> <span class="o">=</span> <span class="n">Batch</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
+    <span class="c1"># Apply all changes</span>
+    <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">changes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">batch</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="c1"># Test configuration</span>
+    <span class="n">new_config</span> <span class="o">=</span> <span class="n">batch</span><span class="o">.</span><span class="n">preview</span><span class="p">()</span>  <span class="c1"># See changes without committing</span>
+
+    <span class="k">if</span> <span class="n">test_fn</span><span class="p">(</span><span class="n">new_config</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">batch</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>  <span class="c1"># Tests passed, apply</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">batch</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>       <span class="c1"># Tests failed, discard</span>
+        <span class="k">raise</span> <span class="n">ConfigTestFailed</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="transaction-log">Transaction Log<a class="headerlink" href="#transaction-log" title="Permanent link">&para;</a></h2>
+<p>Track all operations for audit:</p>
+<div class="highlight"><pre><span></span><code><span class="n">batch</span> <span class="o">=</span> <span class="n">Batch</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">track_operations</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">batch</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;user.name&quot;</span><span class="p">,</span> <span class="s2">&quot;Alice&quot;</span><span class="p">)</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;user.login_count&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Get operation log</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">batch</span><span class="o">.</span><span class="n">get_operations</span><span class="p">()</span>
+<span class="c1"># [</span>
+<span class="c1">#   {&quot;op&quot;: &quot;set&quot;, &quot;path&quot;: &quot;user.name&quot;, &quot;value&quot;: &quot;Alice&quot;},</span>
+<span class="c1">#   {&quot;op&quot;: &quot;update&quot;, &quot;path&quot;: &quot;user.login_count&quot;, &quot;fn&quot;: &quot;&lt;lambda&gt;&quot;}</span>
+<span class="c1"># ]</span>
+
+<span class="c1"># Replay operations on different data</span>
+<span class="n">other_data</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">log</span><span class="p">:</span>
+    <span class="n">apply_operation</span><span class="p">(</span><span class="n">other_data</span><span class="p">,</span> <span class="n">op</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="nested-batches">Nested Batches<a class="headerlink" href="#nested-batches" title="Permanent link">&para;</a></h2>
+<p>Create savepoints with nested batches:</p>
+<div class="highlight"><pre><span></span><code><span class="n">outer</span> <span class="o">=</span> <span class="n">Batch</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">outer</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;status&quot;</span><span class="p">,</span> <span class="s2">&quot;processing&quot;</span><span class="p">)</span>
+
+<span class="c1"># Nested batch for risky operations</span>
+<span class="n">inner</span> <span class="o">=</span> <span class="n">outer</span><span class="o">.</span><span class="n">nested</span><span class="p">()</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">inner</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;risky.operation&quot;</span><span class="p">,</span> <span class="n">compute_value</span><span class="p">())</span>
+    <span class="n">inner</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;another.risky&quot;</span><span class="p">,</span> <span class="n">external_api_call</span><span class="p">())</span>
+    <span class="n">inner</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>  <span class="c1"># Commit to outer batch</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="n">inner</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>  <span class="c1"># Only rolls back inner changes</span>
+    <span class="n">outer</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;status&quot;</span><span class="p">,</span> <span class="s2">&quot;partial_failure&quot;</span><span class="p">)</span>
+
+<span class="n">outer</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>  <span class="c1"># Apply outer changes</span>
+</code></pre></div>
+<h2 id="mathematical-foundation">Mathematical Foundation<a class="headerlink" href="#mathematical-foundation" title="Permanent link">&para;</a></h2>
+<p><code>dotbatch</code> implements a transaction monad with:
+- <strong>Atomicity</strong>: All operations succeed or all fail
+- <strong>Consistency</strong>: Validation ensures invariants
+- <strong>Isolation</strong>: Changes invisible until commit
+- <strong>Durability</strong>: Immutable structures preserve history</p>
+<p>The batch forms a monoid under composition:
+- <strong>Identity</strong>: Empty batch
+- <strong>Associativity</strong>: Batch composition is associative
+- <strong>Closure</strong>: Composing batches yields a batch</p>
+<h2 id="performance-considerations">Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Lazy evaluation</strong>: Operations are queued, not executed until commit</li>
+<li><strong>Single pass application</strong>: All changes applied in one traversal</li>
+<li><strong>Structural sharing</strong>: Unchanged parts share memory</li>
+<li><strong>Rollback cost</strong>: O(1) - just return original data</li>
+</ul>
+<h2 id="related-tools">Related Tools<a class="headerlink" href="#related-tools" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="../dotmod/">dotmod</a></strong> - Individual modifications</li>
+<li><strong><a href="../dotpipe/">dotpipe</a></strong> - Sequential transformations</li>
+<li><strong><a href="../../depth/dotget/">dotget</a></strong> - Read values for validation</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../dotmod/" class="btn btn-neutral float-left" title="dotmod"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../dotpipe/" class="btn btn-neutral float-right" title="dotpipe">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../dotmod/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../dotpipe/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

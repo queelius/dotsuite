@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Your Name" /><link rel="canonical" href="https://yourdocs.url/tools/shape/dotpipe/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>dotpipe - dotsuite - The Dot Notation Universe</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "dotpipe";
+        var mkdocs_page_input_path = "tools/shape/dotpipe.md";
+        var mkdocs_page_url = "/tools/shape/dotpipe/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> dotsuite - The Dot Notation Universe
+        </a>
+        <div class="version">
+          0.1.0
+        </div><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../getting-started/">Getting Started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Concepts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../philosophy/">Philosophy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../ecosystem/">Ecosystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dot-formalism/">Formal Specification</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Architecture</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../proposal-collections-pillar/">Collections Pillar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dot-notation-universe/">Universe Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tools</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" >Depth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../depth/dotget/">dotget</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../depth/dotstar/">dotstar</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Truth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotexists/">dotexists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotequals/">dotequals</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotany/">dotany</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotall/">dotall</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotquery/">dotquery</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Shape Pillar</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../dotmod/">dotmod</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dotbatch/">dotbatch</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">dotpipe</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#basic-usage">Basic Usage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#working-with-nested-data">Working with Nested Data</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#compose-vs-pipe">Compose vs Pipe</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#partial-pipelines">Partial Pipelines</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#real-world-examples">Real-World Examples</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#data-cleaning-pipeline">Data Cleaning Pipeline</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#api-response-transformation">API Response Transformation</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#form-processing">Form Processing</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#async-pipelines">Async Pipelines</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mathematical-foundation">Mathematical Foundation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#related-tools">Related Tools</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dotpluck/">dotpluck</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Collections Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../collections/dotfilter/">dotfilter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../collections/dotrelate/">dotrelate</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Comparisons</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../jaf-comparison/">JAF vs Dotsuite</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">dotsuite - The Dot Notation Universe</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Tools</li>
+          <li class="breadcrumb-item">Shape Pillar</li>
+      <li class="breadcrumb-item active">dotpipe</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="dotpipe">dotpipe<a class="headerlink" href="#dotpipe" title="Permanent link">&para;</a></h1>
+<p><strong>Composable transformation pipelines</strong></p>
+<p>Part of the Shape pillar, <code>dotpipe</code> enables building complex data transformations through function composition.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p><code>dotpipe</code> provides a clean, functional approach to chaining data transformations, making complex operations readable and maintainable.</p>
+<h2 id="basic-usage">Basic Usage<a class="headerlink" href="#basic-usage" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">shape.dotpipe</span><span class="w"> </span><span class="kn">import</span> <span class="n">pipe</span><span class="p">,</span> <span class="n">compose</span>
+
+<span class="c1"># Create a pipeline</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">pipe</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span>      <span class="c1"># Double</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span>     <span class="c1"># Add 10</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">2</span>       <span class="c1"># Halve</span>
+<span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># ((5 * 2) + 10) / 2 = 10</span>
+</code></pre></div>
+<h2 id="working-with-nested-data">Working with Nested Data<a class="headerlink" href="#working-with-nested-data" title="Permanent link">&para;</a></h2>
+<p>Combine with other dotsuite tools:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">shape.dotpipe</span><span class="w"> </span><span class="kn">import</span> <span class="n">pipe</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shape.dotmod</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_</span><span class="p">,</span> <span class="n">update</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">depth.dotget</span><span class="w"> </span><span class="kn">import</span> <span class="n">get</span>
+
+<span class="c1"># Complex transformation pipeline</span>
+<span class="n">process_user</span> <span class="o">=</span> <span class="n">pipe</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">set_</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;user.verified&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">update</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;user.name&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="o">.</span><span class="n">upper</span><span class="p">),</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">set_</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;user.processed_at&quot;</span><span class="p">,</span> <span class="s2">&quot;2024-01-01&quot;</span><span class="p">),</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">delete</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;user.temp_data&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;alice&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;temp_data&quot;</span><span class="p">:</span> <span class="s2">&quot;cleanup&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">process_user</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="c1"># {</span>
+<span class="c1">#     &quot;user&quot;: {</span>
+<span class="c1">#         &quot;name&quot;: &quot;ALICE&quot;,</span>
+<span class="c1">#         &quot;verified&quot;: True,</span>
+<span class="c1">#         &quot;processed_at&quot;: &quot;2024-01-01&quot;</span>
+<span class="c1">#     }</span>
+<span class="c1"># }</span>
+</code></pre></div>
+<h2 id="compose-vs-pipe">Compose vs Pipe<a class="headerlink" href="#compose-vs-pipe" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>pipe</code></strong>: Left-to-right composition (first → last)</li>
+<li><strong><code>compose</code></strong>: Right-to-left composition (last → first)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">shape.dotpipe</span><span class="w"> </span><span class="kn">import</span> <span class="n">pipe</span><span class="p">,</span> <span class="n">compose</span>
+
+<span class="c1"># These are equivalent:</span>
+<span class="n">pipeline1</span> <span class="o">=</span> <span class="n">pipe</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>       <span class="c1"># h(g(f(x)))</span>
+<span class="n">pipeline2</span> <span class="o">=</span> <span class="n">compose</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>    <span class="c1"># h(g(f(x)))</span>
+</code></pre></div>
+<h2 id="partial-pipelines">Partial Pipelines<a class="headerlink" href="#partial-pipelines" title="Permanent link">&para;</a></h2>
+<p>Build reusable transformation components:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Reusable transformations</span>
+<span class="n">normalize_user</span> <span class="o">=</span> <span class="n">pipe</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">update</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">),</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">update</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">add_timestamps</span> <span class="o">=</span> <span class="n">pipe</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">set_</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;created_at&quot;</span><span class="p">,</span> <span class="n">now</span><span class="p">()),</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">set_</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;updated_at&quot;</span><span class="p">,</span> <span class="n">now</span><span class="p">())</span>
+<span class="p">)</span>
+
+<span class="n">validate_user</span> <span class="o">=</span> <span class="n">pipe</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span> <span class="k">if</span> <span class="n">get</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">raise_error</span><span class="p">(</span><span class="s2">&quot;Email required&quot;</span><span class="p">),</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span> <span class="k">if</span> <span class="n">get</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">raise_error</span><span class="p">(</span><span class="s2">&quot;Name required&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Combine into full pipeline</span>
+<span class="n">process_new_user</span> <span class="o">=</span> <span class="n">pipe</span><span class="p">(</span>
+    <span class="n">normalize_user</span><span class="p">,</span>
+    <span class="n">validate_user</span><span class="p">,</span>
+    <span class="n">add_timestamps</span>
+<span class="p">)</span>
+</code></pre></div>
+<h2 id="real-world-examples">Real-World Examples<a class="headerlink" href="#real-world-examples" title="Permanent link">&para;</a></h2>
+<h3 id="data-cleaning-pipeline">Data Cleaning Pipeline<a class="headerlink" href="#data-cleaning-pipeline" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">clean_product_data</span> <span class="o">=</span> <span class="n">pipe</span><span class="p">(</span>
+    <span class="c1"># Normalize strings</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">update</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="p">()),</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">update</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;sku&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)),</span>
+
+    <span class="c1"># Validate price</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">set_</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">get</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)),</span>
+
+    <span class="c1"># Add computed fields</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">set_</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;display_price&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;$</span><span class="si">{</span><span class="n">get</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;price&#39;</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+
+    <span class="c1"># Remove internal fields</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">delete</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;_internal_id&quot;</span><span class="p">),</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">delete</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;_raw_import&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="api-response-transformation">API Response Transformation<a class="headerlink" href="#api-response-transformation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">transform_api_response</span> <span class="o">=</span> <span class="n">pipe</span><span class="p">(</span>
+    <span class="c1"># Extract data envelope</span>
+    <span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="n">get</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{},</span>
+
+    <span class="c1"># Rename fields</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">set_</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;userId&quot;</span><span class="p">,</span> <span class="n">get</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;user_id&quot;</span><span class="p">)),</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">delete</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;user_id&quot;</span><span class="p">),</span>
+
+    <span class="c1"># Flatten nested structure</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="p">{</span><span class="o">**</span><span class="n">d</span><span class="p">,</span> <span class="o">**</span><span class="n">get</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;attributes&quot;</span><span class="p">,</span> <span class="p">{})},</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">delete</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;attributes&quot;</span><span class="p">),</span>
+
+    <span class="c1"># Add metadata</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">set_</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;fetched_at&quot;</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="form-processing">Form Processing<a class="headerlink" href="#form-processing" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">process_form_submission</span> <span class="o">=</span> <span class="n">pipe</span><span class="p">(</span>
+    <span class="c1"># Sanitize inputs</span>
+    <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">v</span> 
+               <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">items</span><span class="p">()},</span>
+
+    <span class="c1"># Validate required fields</span>
+    <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span> <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">field</span><span class="p">)</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">])</span> 
+              <span class="k">else</span> <span class="n">raise_error</span><span class="p">(</span><span class="s2">&quot;Missing required fields&quot;</span><span class="p">),</span>
+
+    <span class="c1"># Normalize email</span>
+    <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">update</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">),</span>
+
+    <span class="c1"># Hash password if present</span>
+    <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">update</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span> <span class="n">hash_password</span><span class="p">)</span> <span class="k">if</span> <span class="n">get</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">f</span><span class="p">,</span>
+
+    <span class="c1"># Add metadata</span>
+    <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">set_</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&quot;submitted_at&quot;</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()),</span>
+    <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">set_</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&quot;ip_address&quot;</span><span class="p">,</span> <span class="n">get_client_ip</span><span class="p">())</span>
+<span class="p">)</span>
+</code></pre></div>
+<h2 id="async-pipelines">Async Pipelines<a class="headerlink" href="#async-pipelines" title="Permanent link">&para;</a></h2>
+<p>For async transformations:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">shape.dotpipe</span><span class="w"> </span><span class="kn">import</span> <span class="n">async_pipe</span>
+
+<span class="n">process_async</span> <span class="o">=</span> <span class="n">async_pipe</span><span class="p">(</span>
+    <span class="n">fetch_user_data</span><span class="p">,</span>      <span class="c1"># async function</span>
+    <span class="n">enrich_with_api</span><span class="p">,</span>      <span class="c1"># async function  </span>
+    <span class="n">save_to_database</span>      <span class="c1"># async function</span>
+<span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">process_async</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="mathematical-foundation">Mathematical Foundation<a class="headerlink" href="#mathematical-foundation" title="Permanent link">&para;</a></h2>
+<p><code>dotpipe</code> implements function composition from category theory:
+- <strong>Associativity</strong>: <code>pipe(f, pipe(g, h))</code> = <code>pipe(pipe(f, g), h)</code>
+- <strong>Identity</strong>: <code>pipe(identity, f)</code> = <code>f</code> = <code>pipe(f, identity)</code>
+- <strong>Functorial</strong>: Preserves structure of transformations</p>
+<h2 id="related-tools">Related Tools<a class="headerlink" href="#related-tools" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="../dotmod/">dotmod</a></strong> - Individual modifications</li>
+<li><strong><a href="../dotbatch/">dotbatch</a></strong> - Atomic batch operations</li>
+<li><strong><a href="../dotpluck/">dotpluck</a></strong> - Extract and reshape data</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../dotbatch/" class="btn btn-neutral float-left" title="dotbatch"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../dotpluck/" class="btn btn-neutral float-right" title="dotpluck">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../dotbatch/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../dotpluck/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

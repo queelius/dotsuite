@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Your Name" /><link rel="canonical" href="https://yourdocs.url/tools/collections/dotrelate/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>dotrelate - dotsuite - The Dot Notation Universe</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "dotrelate";
+        var mkdocs_page_input_path = "tools/collections/dotrelate.md";
+        var mkdocs_page_url = "/tools/collections/dotrelate/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> dotsuite - The Dot Notation Universe
+        </a>
+        <div class="version">
+          0.1.0
+        </div><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../getting-started/">Getting Started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Concepts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../philosophy/">Philosophy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../ecosystem/">Ecosystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dot-formalism/">Formal Specification</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Architecture</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../proposal-collections-pillar/">Collections Pillar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dot-notation-universe/">Universe Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tools</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" >Depth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../depth/dotget/">dotget</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../depth/dotstar/">dotstar</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Truth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotexists/">dotexists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotequals/">dotequals</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotany/">dotany</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotall/">dotall</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotquery/">dotquery</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Shape Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../shape/dotmod/">dotmod</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../shape/dotbatch/">dotbatch</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../shape/dotpipe/">dotpipe</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../shape/dotpluck/">dotpluck</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Collections Pillar</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../dotfilter/">dotfilter</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">dotrelate</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#core-operations">Core Operations</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#joins">Joins</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#projection">Projection</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#set-operations">Set Operations</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#real-world-examples">Real-World Examples</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#user-order-analysis">User Order Analysis</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#data-deduplication">Data Deduplication</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mathematical-foundation">Mathematical Foundation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#integration-with-other-tools">Integration with Other Tools</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cli-usage">CLI Usage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#related-tools">Related Tools</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#theory-and-motivation">Theory and Motivation</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Comparisons</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../jaf-comparison/">JAF vs Dotsuite</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">dotsuite - The Dot Notation Universe</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Tools</li>
+          <li class="breadcrumb-item">Collections Pillar</li>
+      <li class="breadcrumb-item active">dotrelate</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="dotrelate">dotrelate<a class="headerlink" href="#dotrelate" title="Permanent link">&para;</a></h1>
+<p><strong>Relational operations for collections of documents</strong></p>
+<p>Part of the Collections pillar, <code>dotrelate</code> brings fundamental relational algebra operations to JSON-like data structures, enabling SQL-like operations on document collections.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p><code>dotrelate</code> implements core relational operations that work with collections of documents (dictionaries). It provides a functional, composable approach to combining and transforming data from multiple sources.</p>
+<h2 id="core-operations">Core Operations<a class="headerlink" href="#core-operations" title="Permanent link">&para;</a></h2>
+<h3 id="joins">Joins<a class="headerlink" href="#joins" title="Permanent link">&para;</a></h3>
+<h4 id="left_joinleft-right-left_on-right_on"><code>left_join(left, right, left_on, right_on)</code><a class="headerlink" href="#left_joinleft-right-left_on-right_on" title="Permanent link">&para;</a></h4>
+<p>Performs a left outer join, preserving all items from the left collection.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections.dotrelate</span><span class="w"> </span><span class="kn">import</span> <span class="n">left_join</span>
+
+<span class="n">users</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Charlie&quot;</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="n">orders</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;product&quot;</span><span class="p">:</span> <span class="s2">&quot;Book&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;product&quot;</span><span class="p">:</span> <span class="s2">&quot;Pen&quot;</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">left_join</span><span class="p">(</span><span class="n">users</span><span class="p">,</span> <span class="n">orders</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;user_id&quot;</span><span class="p">))</span>
+<span class="c1"># [</span>
+<span class="c1">#   {&quot;id&quot;: 1, &quot;name&quot;: &quot;Alice&quot;, &quot;user_id&quot;: 1, &quot;product&quot;: &quot;Book&quot;},</span>
+<span class="c1">#   {&quot;id&quot;: 1, &quot;name&quot;: &quot;Alice&quot;, &quot;user_id&quot;: 1, &quot;product&quot;: &quot;Pen&quot;},</span>
+<span class="c1">#   {&quot;id&quot;: 2, &quot;name&quot;: &quot;Bob&quot;},</span>
+<span class="c1">#   {&quot;id&quot;: 3, &quot;name&quot;: &quot;Charlie&quot;}</span>
+<span class="c1"># ]</span>
+</code></pre></div>
+<h4 id="inner_joinleft-right-left_on-right_on"><code>inner_join(left, right, left_on, right_on)</code><a class="headerlink" href="#inner_joinleft-right-left_on-right_on" title="Permanent link">&para;</a></h4>
+<p>Returns only items where matches exist in both collections.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections.dotrelate</span><span class="w"> </span><span class="kn">import</span> <span class="n">inner_join</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">inner_join</span><span class="p">(</span><span class="n">users</span><span class="p">,</span> <span class="n">orders</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;user_id&quot;</span><span class="p">))</span>
+<span class="c1"># Only Alice appears (she has orders)</span>
+<span class="c1"># [</span>
+<span class="c1">#   {&quot;id&quot;: 1, &quot;name&quot;: &quot;Alice&quot;, &quot;user_id&quot;: 1, &quot;product&quot;: &quot;Book&quot;},</span>
+<span class="c1">#   {&quot;id&quot;: 1, &quot;name&quot;: &quot;Alice&quot;, &quot;user_id&quot;: 1, &quot;product&quot;: &quot;Pen&quot;}</span>
+<span class="c1"># ]</span>
+</code></pre></div>
+<h3 id="projection">Projection<a class="headerlink" href="#projection" title="Permanent link">&para;</a></h3>
+<h4 id="projectcollection-fields"><code>project(collection, fields)</code><a class="headerlink" href="#projectcollection-fields" title="Permanent link">&para;</a></h4>
+<p>Selects specific fields from each document.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections.dotrelate</span><span class="w"> </span><span class="kn">import</span> <span class="n">project</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;NYC&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;LA&quot;</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">project</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">]))</span>
+<span class="c1"># [</span>
+<span class="c1">#   {&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 30},</span>
+<span class="c1">#   {&quot;name&quot;: &quot;Bob&quot;, &quot;age&quot;: 25}</span>
+<span class="c1"># ]</span>
+</code></pre></div>
+<h3 id="set-operations">Set Operations<a class="headerlink" href="#set-operations" title="Permanent link">&para;</a></h3>
+<h4 id="unionleft-right"><code>union(left, right)</code><a class="headerlink" href="#unionleft-right" title="Permanent link">&para;</a></h4>
+<p>Concatenates two collections (preserves duplicates).</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections.dotrelate</span><span class="w"> </span><span class="kn">import</span> <span class="n">union</span>
+
+<span class="n">set1</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}]</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">}]</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">union</span><span class="p">(</span><span class="n">set1</span><span class="p">,</span> <span class="n">set2</span><span class="p">))</span>
+<span class="c1"># [{&quot;id&quot;: 1}, {&quot;id&quot;: 2}, {&quot;id&quot;: 3}, {&quot;id&quot;: 4}]</span>
+</code></pre></div>
+<h4 id="set_differenceleft-right"><code>set_difference(left, right)</code><a class="headerlink" href="#set_differenceleft-right" title="Permanent link">&para;</a></h4>
+<p>Returns items in left that don't exist in right.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections.dotrelate</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_difference</span>
+
+<span class="n">all_users</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Charlie&quot;</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="n">active_users</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="n">inactive</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">set_difference</span><span class="p">(</span><span class="n">all_users</span><span class="p">,</span> <span class="n">active_users</span><span class="p">))</span>
+<span class="c1"># [{&quot;id&quot;: 2, &quot;name&quot;: &quot;Bob&quot;}, {&quot;id&quot;: 3, &quot;name&quot;: &quot;Charlie&quot;}]</span>
+</code></pre></div>
+<h2 id="real-world-examples">Real-World Examples<a class="headerlink" href="#real-world-examples" title="Permanent link">&para;</a></h2>
+<h3 id="user-order-analysis">User Order Analysis<a class="headerlink" href="#user-order-analysis" title="Permanent link">&para;</a></h3>
+<p>Combine user data with their orders and extract relevant fields:</p>
+<div class="highlight"><pre><span></span><code><span class="n">users</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;alice@example.com&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;bob@example.com&quot;</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="n">orders</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;order_id&quot;</span><span class="p">:</span> <span class="mi">101</span><span class="p">,</span> <span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mf">50.00</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;order_id&quot;</span><span class="p">:</span> <span class="mi">102</span><span class="p">,</span> <span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mf">30.00</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="c1"># Join users with orders</span>
+<span class="n">user_orders</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">left_join</span><span class="p">(</span><span class="n">users</span><span class="p">,</span> <span class="n">orders</span><span class="p">,</span> <span class="s2">&quot;user_id&quot;</span><span class="p">,</span> <span class="s2">&quot;user_id&quot;</span><span class="p">))</span>
+
+<span class="c1"># Project just the fields we need</span>
+<span class="n">summary</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">project</span><span class="p">(</span><span class="n">user_orders</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;order_id&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">]))</span>
+</code></pre></div>
+<h3 id="data-deduplication">Data Deduplication<a class="headerlink" href="#data-deduplication" title="Permanent link">&para;</a></h3>
+<p>Remove duplicates from a dataset:</p>
+<div class="highlight"><pre><span></span><code><span class="n">all_records</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;alice@example.com&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;bob@example.com&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;alice@example.com&quot;</span><span class="p">},</span>  <span class="c1"># Duplicate</span>
+<span class="p">]</span>
+
+<span class="n">seen</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;alice@example.com&quot;</span><span class="p">}]</span>
+<span class="n">unique</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">set_difference</span><span class="p">(</span><span class="n">all_records</span><span class="p">,</span> <span class="n">seen</span><span class="p">))</span>
+</code></pre></div>
+<h2 id="mathematical-foundation">Mathematical Foundation<a class="headerlink" href="#mathematical-foundation" title="Permanent link">&para;</a></h2>
+<p><code>dotrelate</code> implements operations from relational algebra:</p>
+<ul>
+<li><strong>Join (⋈)</strong>: Combines relations based on common attributes</li>
+<li><strong>Projection (π)</strong>: Selects columns from a relation</li>
+<li><strong>Union (∪)</strong>: Set union of two relations</li>
+<li><strong>Difference (-)</strong>: Set difference between relations</li>
+</ul>
+<p>These operations form a complete algebra for querying and transforming relational data.</p>
+<h2 id="integration-with-other-tools">Integration with Other Tools<a class="headerlink" href="#integration-with-other-tools" title="Permanent link">&para;</a></h2>
+<p><code>dotrelate</code> works seamlessly with other dotsuite tools:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections.dotrelate</span><span class="w"> </span><span class="kn">import</span> <span class="n">left_join</span><span class="p">,</span> <span class="n">project</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.dotfilter</span><span class="w"> </span><span class="kn">import</span> <span class="n">dotfilter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">truth.dotquery</span><span class="w"> </span><span class="kn">import</span> <span class="n">Query</span>
+
+<span class="c1"># Filter users before joining</span>
+<span class="n">active_users</span> <span class="o">=</span> <span class="n">dotfilter</span><span class="p">(</span><span class="n">users</span><span class="p">,</span> <span class="n">Query</span><span class="p">(</span><span class="s2">&quot;status equals active&quot;</span><span class="p">))</span>
+
+<span class="c1"># Join with orders</span>
+<span class="n">user_orders</span> <span class="o">=</span> <span class="n">left_join</span><span class="p">(</span><span class="n">active_users</span><span class="p">,</span> <span class="n">orders</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;user_id&quot;</span><span class="p">)</span>
+
+<span class="c1"># Project specific fields</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">project</span><span class="p">(</span><span class="n">user_orders</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;product&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">])</span>
+</code></pre></div>
+<h2 id="cli-usage">CLI Usage<a class="headerlink" href="#cli-usage" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Join two JSONL files</span>
+dotrelate<span class="w"> </span>join<span class="w"> </span>--left<span class="w"> </span>users.jsonl<span class="w"> </span>--right<span class="w"> </span>orders.jsonl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--left-on<span class="w"> </span>id<span class="w"> </span>--right-on<span class="w"> </span>user_id<span class="w"> </span>&gt;<span class="w"> </span>joined.jsonl
+
+<span class="c1"># Project specific fields</span>
+dotrelate<span class="w"> </span>project<span class="w"> </span>--fields<span class="w"> </span>name,email<span class="w"> </span>&lt;<span class="w"> </span>users.jsonl
+
+<span class="c1"># Union two files</span>
+dotrelate<span class="w"> </span>union<span class="w"> </span>file1.jsonl<span class="w"> </span>file2.jsonl<span class="w"> </span>&gt;<span class="w"> </span>combined.jsonl
+</code></pre></div>
+<h2 id="related-tools">Related Tools<a class="headerlink" href="#related-tools" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="../dotfilter/">dotfilter</a></strong>: Filter collections before joining</li>
+<li><strong><a href="../../truth/dotquery/">dotquery</a></strong>: Create complex join conditions</li>
+<li><strong><a href="https://github.com/queelius/jsonl-algebra">jsonl-algebra</a></strong>: Production-ready relational operations</li>
+</ul>
+<h2 id="theory-and-motivation">Theory and Motivation<a class="headerlink" href="#theory-and-motivation" title="Permanent link">&para;</a></h2>
+<p>Relational operations are fundamental to data manipulation. By bringing these operations to document-oriented data, <code>dotrelate</code> bridges the gap between:</p>
+<ol>
+<li><strong>Structured (SQL)</strong> and <strong>semi-structured (JSON)</strong> data paradigms</li>
+<li><strong>Set theory</strong> and <strong>practical data processing</strong></li>
+<li><strong>Mathematical rigor</strong> and <strong>developer ergonomics</strong></li>
+</ol>
+<p>The tool demonstrates that relational algebra's elegance extends beyond traditional databases to any collection of structured documents.</p>
+<p>For more extensive relational operations and optimizations, see the <a href="https://github.com/queelius/jsonl-algebra">jsonl-algebra</a> project, which provides a complete implementation of relational algebra for JSONL data.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../dotfilter/" class="btn btn-neutral float-left" title="dotfilter"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../../jaf-comparison/" class="btn btn-neutral float-right" title="JAF vs Dotsuite">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../dotfilter/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../../jaf-comparison/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

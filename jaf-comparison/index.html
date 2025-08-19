@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Your Name" /><link rel="canonical" href="https://yourdocs.url/jaf-comparison/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>JAF vs Dotsuite - dotsuite - The Dot Notation Universe</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "JAF vs Dotsuite";
+        var mkdocs_page_input_path = "jaf-comparison.md";
+        var mkdocs_page_url = "/jaf-comparison/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> dotsuite - The Dot Notation Universe
+        </a>
+        <div class="version">
+          0.1.0
+        </div><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting Started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Concepts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../philosophy/">Philosophy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ecosystem/">Ecosystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dot-formalism/">Formal Specification</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Architecture</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../proposal-collections-pillar/">Collections Pillar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dot-notation-universe/">Universe Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Depth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/depth/dotget/">dotget</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/depth/dotstar/">dotstar</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Truth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/truth/dotexists/">dotexists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/truth/dotequals/">dotequals</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/truth/dotany/">dotany</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/truth/dotall/">dotall</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/truth/dotquery/">dotquery</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Shape Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/shape/dotmod/">dotmod</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/shape/dotbatch/">dotbatch</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/shape/dotpipe/">dotpipe</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/shape/dotpluck/">dotpluck</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Collections Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/collections/dotfilter/">dotfilter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/collections/dotrelate/">dotrelate</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Comparisons</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">JAF vs Dotsuite</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#philosophical-differences">Philosophical Differences</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#dotsuite-learn-by-building">Dotsuite - "Learn by Building"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#jaf-battle-tested-solution">JAF - "Battle-Tested Solution"</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#feature-comparison">Feature Comparison</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conceptual-alignment">Conceptual Alignment</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#filtering-as-boolean-algebra">Filtering as Boolean Algebra</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pipeline-composition">Pipeline Composition</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#path-navigation">Path Navigation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#when-to-use-which">When to Use Which?</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#use-dotsuite-when">Use Dotsuite When:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#use-jaf-when">Use JAF When:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#learning-path">Learning Path</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#code-examples">Code Examples</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#simple-filter-operation">Simple Filter Operation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pipeline-composition_1">Pipeline Composition</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#integration">Integration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">dotsuite - The Dot Notation Universe</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Comparisons</li>
+      <li class="breadcrumb-item active">JAF vs Dotsuite</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="dotsuite-vs-jaf-pedagogy-vs-production">Dotsuite vs JAF: Pedagogy vs Production<a class="headerlink" href="#dotsuite-vs-jaf-pedagogy-vs-production" title="Permanent link">&para;</a></h1>
+<p>This document compares dotsuite with JAF (Just Another Flow) to help you choose the right tool for your needs.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Dotsuite</strong>: A pedagogical ecosystem teaching data manipulation concepts through simple, composable tools</li>
+<li><strong>JAF</strong>: A production-ready streaming data processing system implementing similar concepts at scale</li>
+</ul>
+<h2 id="philosophical-differences">Philosophical Differences<a class="headerlink" href="#philosophical-differences" title="Permanent link">&para;</a></h2>
+<h3 id="dotsuite-learn-by-building">Dotsuite - "Learn by Building"<a class="headerlink" href="#dotsuite-learn-by-building" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Goal</strong>: Teach concepts through simplicity</li>
+<li><strong>Philosophy</strong>: Unix philosophy - one tool, one purpose</li>
+<li><strong>Audience</strong>: Learners, educators, prototypers</li>
+<li><strong>Code Style</strong>: "Steal this code" - simple enough to copy and understand</li>
+</ul>
+<h3 id="jaf-battle-tested-solution">JAF - "Battle-Tested Solution"<a class="headerlink" href="#jaf-battle-tested-solution" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Goal</strong>: Production-ready data processing</li>
+<li><strong>Philosophy</strong>: Feature-complete streaming framework</li>
+<li><strong>Audience</strong>: Production systems, data engineers</li>
+<li><strong>Code Style</strong>: Robust, optimized, extensive error handling</li>
+</ul>
+<h2 id="feature-comparison">Feature Comparison<a class="headerlink" href="#feature-comparison" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Dotsuite</th>
+<th>JAF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Query Language</strong></td>
+<td>Simple strings: <code>"equals role admin"</code></td>
+<td>S-expressions: <code>["eq?", "@role", "admin"]</code></td>
+</tr>
+<tr>
+<td><strong>Path System</strong></td>
+<td>Dot notation: <code>"user.name"</code></td>
+<td>Advanced AST with regex, fuzzy, wildcards</td>
+</tr>
+<tr>
+<td><strong>Evaluation</strong></td>
+<td>Eager (with lazy QuerySet option)</td>
+<td>Lazy by default with streaming</td>
+</tr>
+<tr>
+<td><strong>Data Sources</strong></td>
+<td>In-memory collections</td>
+<td>Files, directories, stdin, compressed, infinite</td>
+</tr>
+<tr>
+<td><strong>Set Operations</strong></td>
+<td>Basic (union, intersection, difference)</td>
+<td>Index-preserving with collection tracking</td>
+</tr>
+<tr>
+<td><strong>Pipeline Composition</strong></td>
+<td>Separate tools (dotpipe)</td>
+<td>Built-in method chaining</td>
+</tr>
+<tr>
+<td><strong>Memory Usage</strong></td>
+<td>Loads data into memory</td>
+<td>Streaming generators</td>
+</tr>
+<tr>
+<td><strong>Error Handling</strong></td>
+<td>Basic</td>
+<td>Comprehensive with custom exceptions</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Educational focus</td>
+<td>Optimized for production</td>
+</tr>
+<tr>
+<td><strong>Dependencies</strong></td>
+<td>Minimal</td>
+<td>Optional advanced libraries</td>
+</tr>
+</tbody>
+</table>
+<h2 id="conceptual-alignment">Conceptual Alignment<a class="headerlink" href="#conceptual-alignment" title="Permanent link">&para;</a></h2>
+<p>Both projects share core concepts but implement them differently:</p>
+<h3 id="filtering-as-boolean-algebra">Filtering as Boolean Algebra<a class="headerlink" href="#filtering-as-boolean-algebra" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Dotsuite</strong>: <code>dotfilter</code> with QuerySet for lazy evaluation</li>
+<li><strong>JAF</strong>: FilteredStream with comprehensive boolean operations</li>
+</ul>
+<h3 id="pipeline-composition">Pipeline Composition<a class="headerlink" href="#pipeline-composition" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Dotsuite</strong>: <code>dotpipe</code> for transformation chains</li>
+<li><strong>JAF</strong>: Built-in <code>.filter().map().take()</code> chaining</li>
+</ul>
+<h3 id="path-navigation">Path Navigation<a class="headerlink" href="#path-navigation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Dotsuite</strong>: <code>dotget</code> with simple dot notation</li>
+<li><strong>JAF</strong>: Complex path AST with multiple navigation strategies</li>
+</ul>
+<h2 id="when-to-use-which">When to Use Which?<a class="headerlink" href="#when-to-use-which" title="Permanent link">&para;</a></h2>
+<h3 id="use-dotsuite-when">Use Dotsuite When:<a class="headerlink" href="#use-dotsuite-when" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Learning data manipulation concepts</li>
+<li>Teaching programming or data structures</li>
+<li>Building prototypes</li>
+<li>You need simple, understandable code</li>
+<li>You want to modify/extend the implementation</li>
+<li>Working with small to medium datasets</li>
+</ul>
+<h3 id="use-jaf-when">Use JAF When:<a class="headerlink" href="#use-jaf-when" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Building production systems</li>
+<li>Processing large datasets or streams</li>
+<li>Need advanced features (regex paths, fuzzy matching)</li>
+<li>Require robust error handling</li>
+<li>Working with multiple data sources</li>
+<li>Need memory-efficient streaming</li>
+</ul>
+<h2 id="learning-path">Learning Path<a class="headerlink" href="#learning-path" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Start with Dotsuite</strong> to understand concepts:</li>
+<li>How path navigation works (<code>dotget</code>)</li>
+<li>Boolean filtering (<code>dotfilter</code>)</li>
+<li>Pipeline composition (<code>dotpipe</code>)</li>
+<li>
+<p>Set operations on collections</p>
+</li>
+<li>
+<p><strong>Graduate to JAF</strong> for production:</p>
+</li>
+<li>Apply learned concepts at scale</li>
+<li>Leverage advanced features</li>
+<li>Handle real-world edge cases</li>
+</ol>
+<h2 id="code-examples">Code Examples<a class="headerlink" href="#code-examples" title="Permanent link">&para;</a></h2>
+<h3 id="simple-filter-operation">Simple Filter Operation<a class="headerlink" href="#simple-filter-operation" title="Permanent link">&para;</a></h3>
+<p><strong>Dotsuite:</strong>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections.dotfilter</span><span class="w"> </span><span class="kn">import</span> <span class="n">filter_docs</span>
+
+<span class="n">users</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">}]</span>
+<span class="n">adults</span> <span class="o">=</span> <span class="n">filter_docs</span><span class="p">(</span><span class="n">users</span><span class="p">,</span> <span class="s2">&quot;greater_than age 25&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<p><strong>JAF:</strong>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">jaf</span><span class="w"> </span><span class="kn">import</span> <span class="n">stream</span>
+
+<span class="n">adults</span> <span class="o">=</span> <span class="n">stream</span><span class="p">(</span><span class="s2">&quot;users.jsonl&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">filter</span><span class="p">([</span><span class="s2">&quot;gt?&quot;</span><span class="p">,</span> <span class="s2">&quot;@age&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">])</span> \
+    <span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
+</code></pre></div></p>
+<h3 id="pipeline-composition_1">Pipeline Composition<a class="headerlink" href="#pipeline-composition_1" title="Permanent link">&para;</a></h3>
+<p><strong>Dotsuite:</strong>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">shape.dotpipe</span><span class="w"> </span><span class="kn">import</span> <span class="n">pipe</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.dotfilter</span><span class="w"> </span><span class="kn">import</span> <span class="n">filter_docs</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipe</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">,</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">filter_docs</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;equals status active&quot;</span><span class="p">),</span>
+    <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="p">[</span><span class="n">dotget</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">d</span><span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div></p>
+<p><strong>JAF:</strong>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">stream</span><span class="p">(</span><span class="s2">&quot;users.jsonl&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">filter</span><span class="p">([</span><span class="s2">&quot;eq?&quot;</span><span class="p">,</span> <span class="s2">&quot;@status&quot;</span><span class="p">,</span> <span class="s2">&quot;active&quot;</span><span class="p">])</span> \
+    <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s2">&quot;@email&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
+</code></pre></div></p>
+<h2 id="integration">Integration<a class="headerlink" href="#integration" title="Permanent link">&para;</a></h2>
+<p>Both projects can work together:</p>
+<ol>
+<li><strong>Learn with Dotsuite</strong>: Understand the concepts</li>
+<li><strong>Prototype with Dotsuite</strong>: Quick implementations</li>
+<li><strong>Production with JAF</strong>: Scale when ready</li>
+<li><strong>Contribute back</strong>: Share learnings with both communities</li>
+</ol>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>Dotsuite and JAF are complementary projects:
+- <strong>Dotsuite</strong> teaches the "why" and "how" through simplicity
+- <strong>JAF</strong> provides the "what" for production use</p>
+<p>Together, they form a complete ecosystem from learning to production.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../tools/collections/dotrelate/" class="btn btn-neutral float-left" title="dotrelate"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../tools/collections/dotrelate/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

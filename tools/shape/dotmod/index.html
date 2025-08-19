@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Your Name" /><link rel="canonical" href="https://yourdocs.url/tools/shape/dotmod/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>dotmod - dotsuite - The Dot Notation Universe</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "dotmod";
+        var mkdocs_page_input_path = "tools/shape/dotmod.md";
+        var mkdocs_page_url = "/tools/shape/dotmod/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> dotsuite - The Dot Notation Universe
+        </a>
+        <div class="version">
+          0.1.0
+        </div><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../getting-started/">Getting Started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Concepts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../philosophy/">Philosophy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../ecosystem/">Ecosystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dot-formalism/">Formal Specification</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Architecture</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../proposal-collections-pillar/">Collections Pillar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dot-notation-universe/">Universe Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tools</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" >Depth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../depth/dotget/">dotget</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../depth/dotstar/">dotstar</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Truth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotexists/">dotexists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotequals/">dotequals</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotany/">dotany</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotall/">dotall</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotquery/">dotquery</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Shape Pillar</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">dotmod</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#core-operations">Core Operations</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#set_-set-a-value-at-a-path">set_ - Set a value at a path</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#delete-remove-a-path">delete - Remove a path</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#update-apply-a-function-to-a-value">update - Apply a function to a value</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#creating-nested-structures">Creating Nested Structures</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#working-with-lists">Working with Lists</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#immutability-guarantees">Immutability Guarantees</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#real-world-examples">Real-World Examples</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#configuration-updates">Configuration Updates</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#state-management">State Management</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#data-sanitization">Data Sanitization</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#integration-with-other-tools">Integration with Other Tools</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mathematical-foundation">Mathematical Foundation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#related-tools">Related Tools</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dotbatch/">dotbatch</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dotpipe/">dotpipe</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dotpluck/">dotpluck</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Collections Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../collections/dotfilter/">dotfilter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../collections/dotrelate/">dotrelate</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Comparisons</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../jaf-comparison/">JAF vs Dotsuite</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">dotsuite - The Dot Notation Universe</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Tools</li>
+          <li class="breadcrumb-item">Shape Pillar</li>
+      <li class="breadcrumb-item active">dotmod</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="dotmod">dotmod<a class="headerlink" href="#dotmod" title="Permanent link">&para;</a></h1>
+<p><strong>Immutable modifications to nested data structures</strong></p>
+<p>Part of the Shape pillar, <code>dotmod</code> provides surgical, immutable modifications to nested data structures using dot notation paths.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p><code>dotmod</code> enables you to modify values deep within nested structures without mutating the original data, following functional programming principles.</p>
+<h2 id="core-operations">Core Operations<a class="headerlink" href="#core-operations" title="Permanent link">&para;</a></h2>
+<h3 id="set_-set-a-value-at-a-path">set_ - Set a value at a path<a class="headerlink" href="#set_-set-a-value-at-a-path" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">shape.dotmod</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Create a new structure with modified value</span>
+<span class="n">new_data</span> <span class="o">=</span> <span class="n">set_</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;user.role&quot;</span><span class="p">,</span> <span class="s2">&quot;admin&quot;</span><span class="p">)</span>
+
+<span class="c1"># Original unchanged</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">][</span><span class="s2">&quot;role&quot;</span><span class="p">])</span>      <span class="c1"># &quot;user&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_data</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">][</span><span class="s2">&quot;role&quot;</span><span class="p">])</span>  <span class="c1"># &quot;admin&quot;</span>
+</code></pre></div>
+<h3 id="delete-remove-a-path">delete - Remove a path<a class="headerlink" href="#delete-remove-a-path" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">shape.dotmod</span><span class="w"> </span><span class="kn">import</span> <span class="n">delete</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;alice@example.com&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;temp_token&quot;</span><span class="p">:</span> <span class="s2">&quot;xyz123&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Remove temporary token</span>
+<span class="n">clean_data</span> <span class="o">=</span> <span class="n">delete</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;user.temp_token&quot;</span><span class="p">)</span>
+<span class="c1"># {&quot;user&quot;: {&quot;name&quot;: &quot;Alice&quot;, &quot;email&quot;: &quot;alice@example.com&quot;}}</span>
+</code></pre></div>
+<h3 id="update-apply-a-function-to-a-value">update - Apply a function to a value<a class="headerlink" href="#update-apply-a-function-to-a-value" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">shape.dotmod</span><span class="w"> </span><span class="kn">import</span> <span class="n">update</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;product&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Widget&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="mf">10.00</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Apply discount</span>
+<span class="n">discounted</span> <span class="o">=</span> <span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;product.price&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">)</span>
+<span class="c1"># {&quot;product&quot;: {&quot;name&quot;: &quot;Widget&quot;, &quot;price&quot;: 9.00}}</span>
+</code></pre></div>
+<h2 id="creating-nested-structures">Creating Nested Structures<a class="headerlink" href="#creating-nested-structures" title="Permanent link">&para;</a></h2>
+<p><code>dotmod</code> automatically creates intermediate structures as needed:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">shape.dotmod</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># Creates nested structure</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">set_</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;user.profile.settings.theme&quot;</span><span class="p">,</span> <span class="s2">&quot;dark&quot;</span><span class="p">)</span>
+<span class="c1"># {</span>
+<span class="c1">#     &quot;user&quot;: {</span>
+<span class="c1">#         &quot;profile&quot;: {</span>
+<span class="c1">#             &quot;settings&quot;: {</span>
+<span class="c1">#                 &quot;theme&quot;: &quot;dark&quot;</span>
+<span class="c1">#             }</span>
+<span class="c1">#         }</span>
+<span class="c1">#     }</span>
+<span class="c1"># }</span>
+</code></pre></div>
+<h2 id="working-with-lists">Working with Lists<a class="headerlink" href="#working-with-lists" title="Permanent link">&para;</a></h2>
+<p>Modify list elements by index:</p>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;pending&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;pending&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;pending&quot;</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Update second item&#39;s status</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">set_</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;items.1.status&quot;</span><span class="p">,</span> <span class="s2">&quot;completed&quot;</span><span class="p">)</span>
+
+<span class="c1"># Extend lists automatically</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">set_</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;items.3.status&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">)</span>
+<span class="c1"># Automatically extends the list</span>
+</code></pre></div>
+<h2 id="immutability-guarantees">Immutability Guarantees<a class="headerlink" href="#immutability-guarantees" title="Permanent link">&para;</a></h2>
+<p>All operations return new structures with shared, unchanged parts:</p>
+<div class="highlight"><pre><span></span><code><span class="n">original</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+    <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Modify a.x</span>
+<span class="n">modified</span> <span class="o">=</span> <span class="n">set_</span><span class="p">(</span><span class="n">original</span><span class="p">,</span> <span class="s2">&quot;a.x&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Only &#39;a&#39; is cloned, &#39;b&#39; is shared</span>
+<span class="k">assert</span> <span class="n">original</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="n">modified</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]</span>  <span class="c1"># True (shared)</span>
+<span class="k">assert</span> <span class="n">original</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">modified</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span>  <span class="c1"># True (cloned)</span>
+</code></pre></div>
+<h2 id="real-world-examples">Real-World Examples<a class="headerlink" href="#real-world-examples" title="Permanent link">&para;</a></h2>
+<h3 id="configuration-updates">Configuration Updates<a class="headerlink" href="#configuration-updates" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;server&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="mi">8080</span><span class="p">,</span>
+        <span class="s2">&quot;ssl&quot;</span><span class="p">:</span> <span class="kc">False</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Update for production</span>
+<span class="n">prod_config</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">set_</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;server.host&quot;</span><span class="p">,</span> <span class="s2">&quot;api.example.com&quot;</span><span class="p">)</span>
+    <span class="o">|&gt;</span> <span class="n">set_</span><span class="p">(</span><span class="s2">&quot;server.port&quot;</span><span class="p">,</span> <span class="mi">443</span><span class="p">)</span>
+    <span class="o">|&gt;</span> <span class="n">set_</span><span class="p">(</span><span class="s2">&quot;server.ssl&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="state-management">State Management<a class="headerlink" href="#state-management" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">app_state</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;ui&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;theme&quot;</span><span class="p">:</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span> <span class="s2">&quot;sidebar&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># User action: toggle theme</span>
+<span class="n">new_state</span> <span class="o">=</span> <span class="n">update</span><span class="p">(</span><span class="n">app_state</span><span class="p">,</span> <span class="s2">&quot;ui.theme&quot;</span><span class="p">,</span> 
+                  <span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="s2">&quot;dark&quot;</span> <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="s2">&quot;light&quot;</span> <span class="k">else</span> <span class="s2">&quot;light&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="data-sanitization">Data Sanitization<a class="headerlink" href="#data-sanitization" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">user_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;profile&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;alice@example.com&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;secret123&quot;</span><span class="p">,</span>  <span class="c1"># Don&#39;t send to client!</span>
+        <span class="s2">&quot;ssn&quot;</span><span class="p">:</span> <span class="s2">&quot;123-45-6789&quot;</span>      <span class="c1"># Sensitive!</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Remove sensitive fields</span>
+<span class="n">public_data</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">delete</span><span class="p">(</span><span class="n">user_data</span><span class="p">,</span> <span class="s2">&quot;profile.password&quot;</span><span class="p">)</span>
+    <span class="o">|&gt;</span> <span class="n">delete</span><span class="p">(</span><span class="s2">&quot;profile.ssn&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<h2 id="integration-with-other-tools">Integration with Other Tools<a class="headerlink" href="#integration-with-other-tools" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">depth.dotget</span><span class="w"> </span><span class="kn">import</span> <span class="n">get</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shape.dotmod</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">truth.dotexists</span><span class="w"> </span><span class="kn">import</span> <span class="n">check</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">safe_increment</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">amount</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Safely increment a numeric value.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">check</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="n">set_</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">current</span> <span class="o">+</span> <span class="n">amount</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">set_</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="mathematical-foundation">Mathematical Foundation<a class="headerlink" href="#mathematical-foundation" title="Permanent link">&para;</a></h2>
+<p><code>dotmod</code> implements a functional update operation that preserves referential transparency:
+- <strong>Immutability</strong>: f(data) produces new data, original unchanged
+- <strong>Path-based addressing</strong>: Updates are localized to paths
+- <strong>Structural sharing</strong>: Unchanged parts share memory</p>
+<h2 id="related-tools">Related Tools<a class="headerlink" href="#related-tools" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="../dotbatch/">dotbatch</a></strong> - Atomic batch operations</li>
+<li><strong><a href="../dotpipe/">dotpipe</a></strong> - Chain transformations</li>
+<li><strong><a href="../../depth/dotget/">dotget</a></strong> - Read values from paths</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../truth/dotquery/" class="btn btn-neutral float-left" title="dotquery"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../dotbatch/" class="btn btn-neutral float-right" title="dotbatch">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../truth/dotquery/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../dotbatch/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -3,24 +3,28 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="A Unix-philosophy ecosystem for nested data manipulation using dot notation" /><meta name="author" content="Your Name" /><link rel="canonical" href="https://yourdocs.url/" />
       <link rel="shortcut icon" href="img/favicon.ico" />
-    <title>The Dot Notation Universe</title>
+    <title>dotsuite - The Dot Notation Universe</title>
     <link rel="stylesheet" href="css/theme.css" />
     <link rel="stylesheet" href="css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Welcome to the Dot Notation Universe";
+        var mkdocs_page_name = "Home";
         var mkdocs_page_input_path = "index.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/";
       </script>
     
     <!--[if lt IE 9]>
       <script src="js/html5shiv.min.js"></script>
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
       <script>hljs.highlightAll();</script> 
 </head>
 
@@ -30,8 +34,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="." class="icon icon-home"> The Dot Notation Universe
-        </a><div role="search">
+          <a href="." class="icon icon-home"> dotsuite - The Dot Notation Universe
+        </a>
+        <div class="version">
+          0.1.0
+        </div><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
@@ -40,8 +47,22 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">Welcome to the Dot Notation Universe</a>
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Home</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#project-status-v09-beta">Project Status: v0.9-beta</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#quick-overview">Quick Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#get-started">Get Started</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#why-dotsuite">Why dotsuite?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example">Example</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#related-projects">Related Projects</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contributing">Contributing</a>
+    </li>
     </ul>
                 </li>
               </ul>
@@ -49,13 +70,71 @@
                 <li class="toctree-l1"><a class="reference internal" href="getting-started/">Getting Started</a>
                 </li>
               </ul>
+              <p class="caption"><span class="caption-text">Core Concepts</span></p>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="philosophy/">The Philosophy of the Dot Universe</a>
-                </li>
+                  <li class="toctree-l1"><a class="reference internal" href="philosophy/">Philosophy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="ecosystem/">Ecosystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="dot-formalism/">Formal Specification</a>
+                  </li>
               </ul>
+              <p class="caption"><span class="caption-text">Architecture</span></p>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="ecosystem/">The dot Ecosystem: A Tour</a>
+                  <li class="toctree-l1"><a class="reference internal" href="proposal-collections-pillar/">Collections Pillar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="dot-notation-universe/">Universe Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Depth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="tools/depth/dotget/">dotget</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="tools/depth/dotstar/">dotstar</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Truth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="tools/truth/dotexists/">dotexists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="tools/truth/dotequals/">dotequals</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="tools/truth/dotany/">dotany</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="tools/truth/dotall/">dotall</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="tools/truth/dotquery/">dotquery</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Shape Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="tools/shape/dotmod/">dotmod</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="tools/shape/dotbatch/">dotbatch</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="tools/shape/dotpipe/">dotpipe</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="tools/shape/dotpluck/">dotpluck</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Collections Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="tools/collections/dotfilter/">dotfilter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="tools/collections/dotrelate/">dotrelate</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Comparisons</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="jaf-comparison/">JAF vs Dotsuite</a>
+                  </li>
               </ul>
       </div>
     </div>
@@ -64,14 +143,14 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href=".">The Dot Notation Universe</a>
+          <a href=".">dotsuite - The Dot Notation Universe</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Welcome to the Dot Notation Universe</li>
+      <li class="breadcrumb-item active">Home</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -80,8 +159,65 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="welcome-to-the-dot-notation-universe">Welcome to the Dot Notation Universe</h1>
-<p>This is the central documentation for the <code>dot</code> ecosystem, a suite of tools for data manipulation.</p>
+                <h1 id="welcome-to-the-dot-notation-universe">Welcome to the Dot Notation Universe<a class="headerlink" href="#welcome-to-the-dot-notation-universe" title="Permanent link">&para;</a></h1>
+<p>The <code>dotsuite</code> ecosystem provides a comprehensive, pedagogically-designed suite of tools for manipulating nested data structures using dot notation.</p>
+<h2 id="project-status-v09-beta">Project Status: v0.9-beta<a class="headerlink" href="#project-status-v09-beta" title="Permanent link">&para;</a></h2>
+<p>✅ <strong>Feature Complete</strong>: All 15 core tools implemented across 4 pillars<br />
+✅ <strong>Comprehensive Testing</strong>: 367 tests passing with 100% coverage<br />
+✅ <strong>Type Hints</strong>: Full type annotations for IDE support<br />
+✅ <strong>CLI Support</strong>: All tools accessible from command line<br />
+✅ <strong>DSL Parser</strong>: Human-friendly query syntax for dotquery  </p>
+<h2 id="quick-overview">Quick Overview<a class="headerlink" href="#quick-overview" title="Permanent link">&para;</a></h2>
+<p>The ecosystem is organized around three fundamental pillars plus collections:</p>
+<ul>
+<li><strong>🎯 Depth Pillar</strong>: Finding and extracting data (<code>dotget</code>, <code>dotstar</code>, <code>dotselect</code>, <code>dotpath</code>)</li>
+<li><strong>✅ Truth Pillar</strong>: Boolean logic and validation (<code>dotexists</code>, <code>dotequals</code>, <code>dotany</code>, <code>dotall</code>, <code>dotquery</code>)</li>
+<li><strong>🔄 Shape Pillar</strong>: Data transformation (<code>dotmod</code>, <code>dotbatch</code>, <code>dotpipe</code>, <code>dotpluck</code>)</li>
+<li><strong>📚 Collections</strong>: Relational operations (<code>dotfilter</code>, <code>dotrelate</code>)</li>
+</ul>
+<h2 id="get-started">Get Started<a class="headerlink" href="#get-started" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="getting-started/">Getting Started</a> - Installation and first steps</li>
+<li><a href="philosophy/">Philosophy</a> - Design principles and motivation</li>
+<li><a href="ecosystem/">Ecosystem Overview</a> - Complete tool reference</li>
+</ul>
+<h2 id="why-dotsuite">Why dotsuite?<a class="headerlink" href="#why-dotsuite" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Pedagogical Design</strong>: Learn data manipulation concepts through clear, focused tools</li>
+<li><strong>Composability</strong>: Unix philosophy - each tool does one thing well</li>
+<li><strong>Mathematical Foundation</strong>: Built on solid theoretical principles</li>
+<li><strong>Safe by Default</strong>: Immutable operations, graceful handling of missing data</li>
+<li><strong>Progressive Enhancement</strong>: Start simple, add complexity as needed</li>
+</ol>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">depth.dotget</span><span class="w"> </span><span class="kn">import</span> <span class="n">get</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">truth.dotquery</span><span class="w"> </span><span class="kn">import</span> <span class="n">Query</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.dotfilter</span><span class="w"> </span><span class="kn">import</span> <span class="n">dotfilter</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">}},</span>
+    <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">}}</span>
+<span class="p">]</span>
+
+<span class="c1"># Filter admins over 25</span>
+<span class="n">admins</span> <span class="o">=</span> <span class="n">dotfilter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">Query</span><span class="p">(</span><span class="s2">&quot;(user.role equals admin) and (user.age greater 25)&quot;</span><span class="p">))</span>
+
+<span class="c1"># Extract names</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">get</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="s2">&quot;user.name&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">admins</span><span class="p">]</span>  <span class="c1"># [&quot;Alice&quot;]</span>
+</code></pre></div>
+<h2 id="related-projects">Related Projects<a class="headerlink" href="#related-projects" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://github.com/queelius/jsonl-algebra">jsonl-algebra</a> - Production-ready relational operations for JSONL</li>
+<li><a href="https://github.com/queelius/jaf">JAF</a> - JSON Array Filter with advanced capabilities</li>
+</ul>
+<h2 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
+<p>We welcome contributions! See our <a href="https://github.com/queelius/dotsuite">GitHub repository</a> for:
+- Source code
+- Issue tracking
+- Development guidelines
+- Test suite (367 tests!)</p>
+<hr />
+<p><em>"What started as a single, humble function evolved into a complete, coherent ecosystem for manipulating data structures."</em></p>
               
             </div>
           </div><footer>
@@ -130,5 +266,5 @@
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-07-05 12:47:35.972533+00:00
+Build Date UTC : 2025-08-19 02:18:36.235321+00:00
 -->

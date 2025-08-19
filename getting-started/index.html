@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Your Name" /><link rel="canonical" href="https://yourdocs.url/getting-started/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Getting Started - The Dot Notation Universe</title>
+    <title>Getting Started - dotsuite - The Dot Notation Universe</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,13 +14,17 @@
         // Current page data
         var mkdocs_page_name = "Getting Started";
         var mkdocs_page_input_path = "getting-started.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/getting-started/";
       </script>
     
     <!--[if lt IE 9]>
       <script src="../js/html5shiv.min.js"></script>
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
       <script>hljs.highlightAll();</script> 
 </head>
 
@@ -30,8 +34,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href=".." class="icon icon-home"> The Dot Notation Universe
-        </a><div role="search">
+          <a href=".." class="icon icon-home"> dotsuite - The Dot Notation Universe
+        </a>
+        <div class="version">
+          0.1.0
+        </div><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
@@ -40,22 +47,90 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="..">Welcome to the Dot Notation Universe</a>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">Getting Started</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#quick-example">Quick Example</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-three-pillars">The Three Pillars</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#learn-more">Learn More</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#for-developers">For Developers</a>
+    </li>
     </ul>
                 </li>
               </ul>
+              <p class="caption"><span class="caption-text">Core Concepts</span></p>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../philosophy/">The Philosophy of the Dot Universe</a>
-                </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../philosophy/">Philosophy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ecosystem/">Ecosystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dot-formalism/">Formal Specification</a>
+                  </li>
               </ul>
+              <p class="caption"><span class="caption-text">Architecture</span></p>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../ecosystem/">The dot Ecosystem: A Tour</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../proposal-collections-pillar/">Collections Pillar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dot-notation-universe/">Universe Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Depth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/depth/dotget/">dotget</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/depth/dotstar/">dotstar</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Truth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/truth/dotexists/">dotexists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/truth/dotequals/">dotequals</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/truth/dotany/">dotany</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/truth/dotall/">dotall</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/truth/dotquery/">dotquery</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Shape Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/shape/dotmod/">dotmod</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/shape/dotbatch/">dotbatch</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/shape/dotpipe/">dotpipe</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/shape/dotpluck/">dotpluck</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Collections Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/collections/dotfilter/">dotfilter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tools/collections/dotrelate/">dotrelate</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Comparisons</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../jaf-comparison/">JAF vs Dotsuite</a>
+                  </li>
               </ul>
       </div>
     </div>
@@ -64,7 +139,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="..">The Dot Notation Universe</a>
+          <a href="..">dotsuite - The Dot Notation Universe</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -80,14 +155,79 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="getting-started">Getting Started</h1>
-<p>This guide will walk you through the installation and basic usage of the <code>dot</code> tools.</p>
+                <h1 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h1>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Install from PyPI (once published)</span>
+pip<span class="w"> </span>install<span class="w"> </span>dotsuite
+
+<span class="c1"># Or install from source</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/yourusername/dotsuite.git
+<span class="nb">cd</span><span class="w"> </span>dotsuite
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</code></pre></div>
+<h2 id="quick-example">Quick Example<a class="headerlink" href="#quick-example" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># After pip install dotsuite:</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotsuite.depth.dotget</span><span class="w"> </span><span class="kn">import</span> <span class="n">get</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotsuite.depth.dotstar</span><span class="w"> </span><span class="kn">import</span> <span class="n">search</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotsuite.shape.dotmod</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_</span>
+
+<span class="c1"># Or if using source install:</span>
+<span class="c1"># from depth.dotget.core import get</span>
+<span class="c1"># from depth.dotstar.core import search</span>
+<span class="c1"># from shape.dotmod.core import set_</span>
+
+<span class="c1"># Your nested data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;users&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Get a specific value</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;users.0.name&quot;</span><span class="p">)</span>  <span class="c1"># &quot;Alice&quot;</span>
+
+<span class="c1"># Search with wildcards</span>
+<span class="n">all_names</span> <span class="o">=</span> <span class="n">search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;users.*.name&quot;</span><span class="p">)</span>  <span class="c1"># [&quot;Alice&quot;, &quot;Bob&quot;]</span>
+
+<span class="c1"># Modify data (returns new copy)</span>
+<span class="n">new_data</span> <span class="o">=</span> <span class="n">set_</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;users.0.role&quot;</span><span class="p">,</span> <span class="s2">&quot;superadmin&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="the-three-pillars">The Three Pillars<a class="headerlink" href="#the-three-pillars" title="Permanent link">&para;</a></h2>
+<p><strong>Depth</strong> - Finding data:</p>
+<ul>
+<li><code>dotget</code> - Simple path access</li>
+<li><code>dotstar</code> - Wildcard patterns</li>
+</ul>
+<p><strong>Truth</strong> - Validating data:</p>
+<ul>
+<li><code>dotexists</code> - Check if path exists</li>
+<li><code>dotany</code>/<code>dotall</code> - Quantifiers</li>
+</ul>
+<p><strong>Shape</strong> - Transforming data:</p>
+<ul>
+<li><code>dotmod</code> - Immutable modifications</li>
+<li><code>dotbatch</code> - Atomic transactions</li>
+</ul>
+<h2 id="learn-more">Learn More<a class="headerlink" href="#learn-more" title="Permanent link">&para;</a></h2>
+<p>Ready to dive deeper? Check out:</p>
+<ul>
+<li><a href="../philosophy/">Philosophy</a> - The design principles behind dotsuite</li>
+<li><a href="../ecosystem/">Ecosystem</a> - Complete tool overview</li>
+<li><a href="https://github.com/yourusername/dotsuite/tree/main/examples">Examples</a> - Real-world usage</li>
+</ul>
+<h2 id="for-developers">For Developers<a class="headerlink" href="#for-developers" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Development setup with testing tools</span>
+make<span class="w"> </span>install-dev
+make<span class="w"> </span><span class="nb">test</span>
+make<span class="w"> </span>docs-serve<span class="w">  </span><span class="c1"># View docs at http://127.0.0.1:8000</span>
+</code></pre></div>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href=".." class="btn btn-neutral float-left" title="Welcome to the Dot Notation Universe"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../philosophy/" class="btn btn-neutral float-right" title="The Philosophy of the Dot Universe">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../philosophy/" class="btn btn-neutral float-right" title="Philosophy">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>

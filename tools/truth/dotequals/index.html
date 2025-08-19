@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Your Name" /><link rel="canonical" href="https://yourdocs.url/tools/truth/dotequals/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>dotequals - dotsuite - The Dot Notation Universe</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "dotequals";
+        var mkdocs_page_input_path = "tools/truth/dotequals.md";
+        var mkdocs_page_url = "/tools/truth/dotequals/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> dotsuite - The Dot Notation Universe
+        </a>
+        <div class="version">
+          0.1.0
+        </div><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../getting-started/">Getting Started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Concepts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../philosophy/">Philosophy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../ecosystem/">Ecosystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dot-formalism/">Formal Specification</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Architecture</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../proposal-collections-pillar/">Collections Pillar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dot-notation-universe/">Universe Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tools</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" >Depth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../depth/dotget/">dotget</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../depth/dotstar/">dotstar</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Truth Pillar</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../dotexists/">dotexists</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">dotequals</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#core-functions">Core Functions</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#equalsdata-path-value">equals(data, path, value)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#not_equalsdata-path-value">not_equals(data, path, value)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#equals_anydata-path-values">equals_any(data, path, *values)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#command-line-usage">Command Line Usage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#common-use-cases">Common Use Cases</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-configuration-validation">1. Configuration Validation</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2-user-authorization">2. User Authorization</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#3-state-machine-validation">3. State Machine Validation</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4-shell-script-conditions">4. Shell Script Conditions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#design-decisions">Design Decisions</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#missing-paths">Missing Paths</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#type-sensitivity">Type Sensitivity</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#philosophy">Philosophy</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#comparison-with-other-truth-tools">Comparison with Other Truth Tools</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#see-also">See Also</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dotany/">dotany</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dotall/">dotall</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dotquery/">dotquery</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Shape Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../shape/dotmod/">dotmod</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../shape/dotbatch/">dotbatch</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../shape/dotpipe/">dotpipe</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../shape/dotpluck/">dotpluck</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Collections Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../collections/dotfilter/">dotfilter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../collections/dotrelate/">dotrelate</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Comparisons</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../jaf-comparison/">JAF vs Dotsuite</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">dotsuite - The Dot Notation Universe</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Tools</li>
+          <li class="breadcrumb-item">Truth Pillar</li>
+      <li class="breadcrumb-item active">dotequals</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="dotequals">dotequals<a class="headerlink" href="#dotequals" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>Check if a path has a specific value - Truth pillar's pattern layer</p>
+</blockquote>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p><code>dotequals</code> bridges the gap between simple existence checks (<code>dotexists</code>) and complex boolean queries (<code>dotquery</code>). It answers the question: "Does this path exist AND have this specific value?"</p>
+<p>Part of the Truth pillar's pattern layer, it's pedagogically positioned to introduce value checking after users master path existence.</p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># As part of dotsuite</span>
+pip<span class="w"> </span>install<span class="w"> </span>dotsuite
+
+<span class="c1"># Or from source</span>
+<span class="nb">cd</span><span class="w"> </span>src/truth/dotequals
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</code></pre></div>
+<h2 id="core-functions">Core Functions<a class="headerlink" href="#core-functions" title="Permanent link">&para;</a></h2>
+<h3 id="equalsdata-path-value"><code>equals(data, path, value)</code><a class="headerlink" href="#equalsdata-path-value" title="Permanent link">&para;</a></h3>
+<p>Check if a path exists and has a specific value.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">truth.dotequals.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">equals</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Check exact values</span>
+<span class="n">equals</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;user.name&quot;</span><span class="p">,</span> <span class="s2">&quot;Alice&quot;</span><span class="p">)</span>     <span class="c1"># True</span>
+<span class="n">equals</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;user.name&quot;</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">)</span>       <span class="c1"># False</span>
+<span class="n">equals</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;user.role&quot;</span><span class="p">,</span> <span class="s2">&quot;admin&quot;</span><span class="p">)</span>     <span class="c1"># True</span>
+<span class="n">equals</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;user.active&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>      <span class="c1"># True</span>
+
+<span class="c1"># Missing paths return False</span>
+<span class="n">equals</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;user.email&quot;</span><span class="p">,</span> <span class="s2">&quot;alice@example.com&quot;</span><span class="p">)</span>  <span class="c1"># False</span>
+</code></pre></div>
+<h3 id="not_equalsdata-path-value"><code>not_equals(data, path, value)</code><a class="headerlink" href="#not_equalsdata-path-value" title="Permanent link">&para;</a></h3>
+<p>Check if a path exists and does NOT have a specific value.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">truth.dotequals.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">not_equals</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;active&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">}</span>
+
+<span class="n">not_equals</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">,</span> <span class="s2">&quot;inactive&quot;</span><span class="p">)</span>  <span class="c1"># True</span>
+<span class="n">not_equals</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">,</span> <span class="s2">&quot;active&quot;</span><span class="p">)</span>    <span class="c1"># False</span>
+<span class="n">not_equals</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>            <span class="c1"># True</span>
+
+<span class="c1"># Note: Missing paths return True (None != value)</span>
+<span class="n">not_equals</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">,</span> <span class="s2">&quot;anything&quot;</span><span class="p">)</span>  <span class="c1"># True</span>
+<span class="n">not_equals</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>        <span class="c1"># False</span>
+</code></pre></div>
+<h3 id="equals_anydata-path-values"><code>equals_any(data, path, *values)</code><a class="headerlink" href="#equals_anydata-path-values" title="Permanent link">&para;</a></h3>
+<p>Check if a path equals any of the provided values.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">truth.dotequals.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">equals_any</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;moderator&quot;</span><span class="p">}}</span>
+
+<span class="c1"># Check against multiple possibilities</span>
+<span class="n">equals_any</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;user.role&quot;</span><span class="p">,</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span> <span class="s2">&quot;moderator&quot;</span><span class="p">,</span> <span class="s2">&quot;superuser&quot;</span><span class="p">)</span>  <span class="c1"># True</span>
+<span class="n">equals_any</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;user.role&quot;</span><span class="p">,</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;guest&quot;</span><span class="p">)</span>                   <span class="c1"># False</span>
+</code></pre></div>
+<h2 id="command-line-usage">Command Line Usage<a class="headerlink" href="#command-line-usage" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Basic equality check</span>
+dotequals<span class="w"> </span>data.json<span class="w"> </span>user.role<span class="w"> </span>admin
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span><span class="w">  </span><span class="c1"># 0 if true, 1 if false</span>
+
+<span class="c1"># Check if NOT equal</span>
+dotequals<span class="w"> </span>data.json<span class="w"> </span>status<span class="w"> </span>inactive<span class="w"> </span>--not
+
+<span class="c1"># Check if equals any of several values</span>
+dotequals<span class="w"> </span>data.json<span class="w"> </span>user.role<span class="w"> </span>admin<span class="w"> </span>--any<span class="w"> </span>moderator<span class="w"> </span>superuser
+
+<span class="c1"># Verbose output</span>
+dotequals<span class="w"> </span>data.json<span class="w"> </span>user.active<span class="w"> </span><span class="nb">true</span><span class="w"> </span>--verbose
+<span class="c1"># ✓ Path &#39;user.active&#39; equals true</span>
+</code></pre></div>
+<p>Exit codes:
+- <code>0</code> - Condition is true
+- <code>1</code> - Condition is false</p>
+<h2 id="common-use-cases">Common Use Cases<a class="headerlink" href="#common-use-cases" title="Permanent link">&para;</a></h2>
+<h3 id="1-configuration-validation">1. Configuration Validation<a class="headerlink" href="#1-configuration-validation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;environment&quot;</span><span class="p">:</span> <span class="s2">&quot;production&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;debug&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;database&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;driver&quot;</span><span class="p">:</span> <span class="s2">&quot;postgresql&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;localhost&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Validate critical settings</span>
+<span class="k">if</span> <span class="n">equals</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;environment&quot;</span><span class="p">,</span> <span class="s2">&quot;production&quot;</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">equals</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;debug&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> <span class="s2">&quot;Debug must be off in production!&quot;</span>
+    <span class="k">assert</span> <span class="n">equals_any</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;database.driver&quot;</span><span class="p">,</span> <span class="s2">&quot;postgresql&quot;</span><span class="p">,</span> <span class="s2">&quot;mysql&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="2-user-authorization">2. User Authorization<a class="headerlink" href="#2-user-authorization" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">user</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
+    <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;read&quot;</span><span class="p">,</span> <span class="s2">&quot;write&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="kc">True</span>
+<span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">can_delete</span><span class="p">(</span><span class="n">user_data</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">equals</span><span class="p">(</span><span class="n">user_data</span><span class="p">,</span> <span class="s2">&quot;active&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="ow">and</span>
+        <span class="n">equals_any</span><span class="p">(</span><span class="n">user_data</span><span class="p">,</span> <span class="s2">&quot;role&quot;</span><span class="p">,</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span> <span class="s2">&quot;superuser&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+</code></pre></div>
+<h3 id="3-state-machine-validation">3. State Machine Validation<a class="headerlink" href="#3-state-machine-validation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">order</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;ORD-123&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;pending&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;payment&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;authorized&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Check if order can be shipped</span>
+<span class="n">can_ship</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">equals</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">,</span> <span class="s2">&quot;pending&quot;</span><span class="p">)</span> <span class="ow">and</span>
+    <span class="n">equals</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="s2">&quot;payment.status&quot;</span><span class="p">,</span> <span class="s2">&quot;authorized&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="4-shell-script-conditions">4. Shell Script Conditions<a class="headerlink" href="#4-shell-script-conditions" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Check environment before deployment</span>
+<span class="k">if</span><span class="w"> </span>dotequals<span class="w"> </span>config.json<span class="w"> </span>environment<span class="w"> </span>production<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span>!<span class="w"> </span>dotequals<span class="w"> </span>config.json<span class="w"> </span>debug<span class="w"> </span>false<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;ERROR: Debug mode is on in production!&quot;</span>
+<span class="w">        </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="w">    </span><span class="k">fi</span>
+<span class="k">fi</span>
+
+<span class="c1"># Check service status</span>
+<span class="k">if</span><span class="w"> </span>dotequals<span class="w"> </span>status.json<span class="w"> </span>service.state<span class="w"> </span>running<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Service is running&quot;</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Service is not running&quot;</span>
+<span class="w">    </span>systemctl<span class="w"> </span>start<span class="w"> </span>myservice
+<span class="k">fi</span>
+</code></pre></div>
+<h2 id="design-decisions">Design Decisions<a class="headerlink" href="#design-decisions" title="Permanent link">&para;</a></h2>
+<h3 id="missing-paths">Missing Paths<a class="headerlink" href="#missing-paths" title="Permanent link">&para;</a></h3>
+<p>When a path doesn't exist:
+- <code>equals</code> returns <code>False</code> (can't equal a value if it doesn't exist)
+- <code>not_equals</code> returns <code>True</code> (None != any non-None value)
+- <code>equals_any</code> returns <code>False</code> (can't match any value if it doesn't exist)</p>
+<p>This behavior is consistent with <code>dotget</code> returning <code>None</code> for missing paths.</p>
+<h3 id="type-sensitivity">Type Sensitivity<a class="headerlink" href="#type-sensitivity" title="Permanent link">&para;</a></h3>
+<p>Comparisons are type-sensitive:
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">}</span>
+<span class="n">equals</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span>    <span class="c1"># True</span>
+<span class="n">equals</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="s2">&quot;42&quot;</span><span class="p">)</span>  <span class="c1"># False - different types</span>
+</code></pre></div></p>
+<h2 id="philosophy">Philosophy<a class="headerlink" href="#philosophy" title="Permanent link">&para;</a></h2>
+<p><code>dotequals</code> follows the "steal this code" philosophy. It's essentially:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">equals</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">get</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span> <span class="o">==</span> <span class="n">value</span>
+</code></pre></div>
+<p>But with proper handling of missing paths and consistent behavior across the ecosystem.</p>
+<h2 id="comparison-with-other-truth-tools">Comparison with Other Truth Tools<a class="headerlink" href="#comparison-with-other-truth-tools" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Question</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dotexists</code></td>
+<td>Does path exist?</td>
+<td><code>check(data, "user.email")</code></td>
+</tr>
+<tr>
+<td><code>dotequals</code></td>
+<td>Does path have value?</td>
+<td><code>equals(data, "status", "active")</code></td>
+</tr>
+<tr>
+<td><code>dotany</code></td>
+<td>Does any item match?</td>
+<td><code>any_match(data, "users.*.role", "admin")</code></td>
+</tr>
+<tr>
+<td><code>dotall</code></td>
+<td>Do all items match?</td>
+<td><code>all_match(data, "users.*.active", True)</code></td>
+</tr>
+<tr>
+<td><code>dotquery</code></td>
+<td>Complex boolean logic</td>
+<td><code>Query("age &gt; 18 and role == admin")</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../dotexists/"><code>dotexists</code></a> - Check path existence</li>
+<li><a href="../dotquery/"><code>dotquery</code></a> - Complex boolean queries</li>
+<li><a href="../dotany/"><code>dotany</code></a> - Existential quantifier</li>
+<li><a href="../dotall/"><code>dotall</code></a> - Universal quantifier</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../dotexists/" class="btn btn-neutral float-left" title="dotexists"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../dotany/" class="btn btn-neutral float-right" title="dotany">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../dotexists/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../dotany/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

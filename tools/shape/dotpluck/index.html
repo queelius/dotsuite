@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Your Name" /><link rel="canonical" href="https://yourdocs.url/tools/shape/dotpluck/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>dotpluck - dotsuite - The Dot Notation Universe</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "dotpluck";
+        var mkdocs_page_input_path = "tools/shape/dotpluck.md";
+        var mkdocs_page_url = "/tools/shape/dotpluck/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> dotsuite - The Dot Notation Universe
+        </a>
+        <div class="version">
+          0.1.0
+        </div><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../getting-started/">Getting Started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Concepts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../philosophy/">Philosophy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../ecosystem/">Ecosystem</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dot-formalism/">Formal Specification</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Architecture</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../proposal-collections-pillar/">Collections Pillar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dot-notation-universe/">Universe Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tools</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" >Depth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../depth/dotget/">dotget</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../depth/dotstar/">dotstar</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Truth Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotexists/">dotexists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotequals/">dotequals</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotany/">dotany</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotall/">dotall</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../truth/dotquery/">dotquery</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Shape Pillar</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../dotmod/">dotmod</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dotbatch/">dotbatch</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dotpipe/">dotpipe</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">dotpluck</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#core-functions">Core Functions</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#pluckdata-shape">pluck(data, shape)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pluck_simpledata-paths">pluck_simple(data, **paths)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pluck_subsetdata-path-keys">pluck_subset(data, path, *keys)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pluck_listdata-paths">pluck_list(data, *paths)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#command-line-usage">Command Line Usage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#common-use-cases">Common Use Cases</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-api-response-reshaping">1. API Response Reshaping</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2-configuration-reshaping">2. Configuration Reshaping</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#3-data-schema-migration">3. Data Schema Migration</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#philosophy">Philosophy</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#comparison-with-other-tools">Comparison with Other Tools</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#see-also">See Also</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Collections Pillar</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../collections/dotfilter/">dotfilter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../collections/dotrelate/">dotrelate</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Comparisons</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../jaf-comparison/">JAF vs Dotsuite</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">dotsuite - The Dot Notation Universe</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Tools</li>
+          <li class="breadcrumb-item">Shape Pillar</li>
+      <li class="breadcrumb-item active">dotpluck</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="dotpluck">dotpluck<a class="headerlink" href="#dotpluck" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>Project data into new shapes - the Shape pillar's primitive</p>
+</blockquote>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p><code>dotpluck</code> is the foundational tool in the Shape pillar. Unlike <code>dotget</code> which navigates to values, <code>dotpluck</code> RESHAPES data by projecting selected parts into new structures. It's not about extraction, but about creating new shapes from existing data - the "Hello World" of data transformation.</p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># As part of dotsuite</span>
+pip<span class="w"> </span>install<span class="w"> </span>dotsuite
+
+<span class="c1"># Or from source</span>
+<span class="nb">cd</span><span class="w"> </span>src/shape/dotpluck
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</code></pre></div>
+<h2 id="core-functions">Core Functions<a class="headerlink" href="#core-functions" title="Permanent link">&para;</a></h2>
+<h3 id="pluckdata-shape"><code>pluck(data, shape)</code><a class="headerlink" href="#pluckdata-shape" title="Permanent link">&para;</a></h3>
+<p>Project data into a new shape by extracting and restructuring selected paths.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">shape.dotpluck.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">pluck</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="s2">&quot;Smith&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+        <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;alice@example.com&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;theme&quot;</span><span class="p">:</span> <span class="s2">&quot;dark&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Create a new shape</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pluck</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;user.firstName&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;years&quot;</span><span class="p">:</span> <span class="s2">&quot;user.age&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;contact&quot;</span><span class="p">:</span> <span class="s2">&quot;user.email&quot;</span>
+<span class="p">})</span>
+<span class="c1"># Returns: {&#39;name&#39;: &#39;Alice&#39;, &#39;years&#39;: 30, &#39;contact&#39;: &#39;alice@example.com&#39;}</span>
+
+<span class="c1"># Nested reshaping</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pluck</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;person&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;first&quot;</span><span class="p">:</span> <span class="s2">&quot;user.firstName&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;last&quot;</span><span class="p">:</span> <span class="s2">&quot;user.lastName&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;preferences&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;settings.theme&quot;</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+<span class="c1"># Returns: {&#39;person&#39;: {&#39;first&#39;: &#39;Alice&#39;, &#39;last&#39;: &#39;Smith&#39;}, &#39;preferences&#39;: {&#39;display&#39;: &#39;dark&#39;}}</span>
+</code></pre></div>
+<h3 id="pluck_simpledata-paths"><code>pluck_simple(data, **paths)</code><a class="headerlink" href="#pluck_simpledata-paths" title="Permanent link">&para;</a></h3>
+<p>Simple projection - convenience wrapper for flat reshaping.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">shape.dotpluck.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">pluck_simple</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;customer&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="s2">&quot;Smith&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;yearsOld&quot;</span><span class="p">:</span> <span class="mi">30</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Create new flat structure</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pluck_simple</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;customer.firstName&quot;</span><span class="p">,</span>
+    <span class="n">surname</span><span class="o">=</span><span class="s2">&quot;customer.lastName&quot;</span><span class="p">,</span>
+    <span class="n">age</span><span class="o">=</span><span class="s2">&quot;customer.yearsOld&quot;</span>
+<span class="p">)</span>
+<span class="c1"># Returns: {&#39;name&#39;: &#39;Alice&#39;, &#39;surname&#39;: &#39;Smith&#39;, &#39;age&#39;: 30}</span>
+</code></pre></div>
+<h3 id="pluck_subsetdata-path-keys"><code>pluck_subset(data, path, *keys)</code><a class="headerlink" href="#pluck_subsetdata-path-keys" title="Permanent link">&para;</a></h3>
+<p>Project a subset of an object's fields.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">shape.dotpluck.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">pluck_subset</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;alice@example.com&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2024-01-01&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Extract only public fields</span>
+<span class="n">public_info</span> <span class="o">=</span> <span class="n">pluck_subset</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">)</span>
+<span class="c1"># Returns: {&#39;id&#39;: 123, &#39;name&#39;: &#39;Alice&#39;, &#39;email&#39;: &#39;alice@example.com&#39;}</span>
+</code></pre></div>
+<h3 id="pluck_listdata-paths"><code>pluck_list(data, *paths)</code><a class="headerlink" href="#pluck_listdata-paths" title="Permanent link">&para;</a></h3>
+<p>Project values into a simple list (no keys).</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">shape.dotpluck.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">pluck_list</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}}</span>
+
+<span class="c1"># When you just need values, not structure</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">pluck_list</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;user.name&quot;</span><span class="p">,</span> <span class="s2">&quot;user.age&quot;</span><span class="p">,</span> <span class="s2">&quot;user.role&quot;</span><span class="p">)</span>
+<span class="c1"># Returns: [&#39;Alice&#39;, 30, None]</span>
+</code></pre></div>
+<h2 id="command-line-usage">Command Line Usage<a class="headerlink" href="#command-line-usage" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Reshape data with a shape specification</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;{&quot;user&quot;: {&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 30}}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>dotpluck<span class="w"> </span>-<span class="w"> </span><span class="s1">&#39;{&quot;name&quot;: &quot;user.name&quot;, &quot;years&quot;: &quot;user.age&quot;}&#39;</span>
+
+<span class="c1"># Extract specific fields as a list</span>
+dotpluck<span class="w"> </span>data.json<span class="w"> </span>--list<span class="w"> </span>user.name<span class="w"> </span>user.email<span class="w"> </span>user.role
+
+<span class="c1"># Project a subset of fields</span>
+dotpluck<span class="w"> </span>data.json<span class="w"> </span>--subset<span class="w"> </span>user<span class="w"> </span>id<span class="w"> </span>name<span class="w"> </span>email
+</code></pre></div>
+<h2 id="common-use-cases">Common Use Cases<a class="headerlink" href="#common-use-cases" title="Permanent link">&para;</a></h2>
+<h3 id="1-api-response-reshaping">1. API Response Reshaping<a class="headerlink" href="#1-api-response-reshaping" title="Permanent link">&para;</a></h3>
+<p>Transform API responses into the shape your application needs:</p>
+<div class="highlight"><pre><span></span><code><span class="n">api_response</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;alice@example.com&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;internal_id&quot;</span><span class="p">:</span> <span class="s2">&quot;xyz789&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2024-01-01T00:00:00Z&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;last_login&quot;</span><span class="p">:</span> <span class="s2">&quot;2024-01-15T10:30:00Z&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;_metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;subscription&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;plan&quot;</span><span class="p">:</span> <span class="s2">&quot;premium&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;expires&quot;</span><span class="p">:</span> <span class="s2">&quot;2025-01-01&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Reshape for your UI component</span>
+<span class="n">ui_data</span> <span class="o">=</span> <span class="n">pluck</span><span class="p">(</span><span class="n">api_response</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;data.user.id&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;data.user.name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;data.user.email&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;subscription&quot;</span><span class="p">:</span> <span class="s2">&quot;data.subscription.plan&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;isPremium&quot;</span><span class="p">:</span> <span class="kc">True</span>  <span class="c1"># Static value</span>
+<span class="p">})</span>
+<span class="c1"># Returns: structured data ready for your UI</span>
+</code></pre></div>
+<h3 id="2-configuration-reshaping">2. Configuration Reshaping<a class="headerlink" href="#2-configuration-reshaping" title="Permanent link">&para;</a></h3>
+<p>Create deployment-specific configurations:</p>
+<div class="highlight"><pre><span></span><code><span class="n">full_config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;database&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="mi">5432</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;myapp&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pool_size&quot;</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;cache&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="mi">6379</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;logging&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;debug&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="s2">&quot;/var/log/app.log&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Create environment-specific config</span>
+<span class="n">production_config</span> <span class="o">=</span> <span class="n">pluck</span><span class="p">(</span><span class="n">full_config</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;connections&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;db&quot;</span><span class="p">:</span> <span class="s2">&quot;database.host&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;cache&quot;</span><span class="p">:</span> <span class="s2">&quot;cache.host&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;database&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;database.name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pool&quot;</span><span class="p">:</span> <span class="s2">&quot;database.pool_size&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;log_level&quot;</span><span class="p">:</span> <span class="s2">&quot;warning&quot;</span>  <span class="c1"># Override for production</span>
+<span class="p">})</span>
+</code></pre></div>
+<h3 id="3-data-schema-migration">3. Data Schema Migration<a class="headerlink" href="#3-data-schema-migration" title="Permanent link">&para;</a></h3>
+<p>Migrate between different data schemas:</p>
+<div class="highlight"><pre><span></span><code><span class="n">old_format</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;customer_info&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;personal&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Smith&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;contact&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;email_address&quot;</span><span class="p">:</span> <span class="s2">&quot;alice@example.com&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;phone&quot;</span><span class="p">:</span> <span class="s2">&quot;+1234567890&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;account&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-01-01&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;premium&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Migrate to new nested schema</span>
+<span class="n">new_format</span> <span class="o">=</span> <span class="n">pluck</span><span class="p">(</span><span class="n">old_format</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;profile&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;first&quot;</span><span class="p">:</span> <span class="s2">&quot;customer_info.personal.first_name&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;last&quot;</span><span class="p">:</span> <span class="s2">&quot;customer_info.personal.last_name&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;contactMethods&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;primary&quot;</span><span class="p">:</span> <span class="s2">&quot;customer_info.contact.email_address&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;phone&quot;</span><span class="p">:</span> <span class="s2">&quot;customer_info.contact.phone&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;accountType&quot;</span><span class="p">:</span> <span class="s2">&quot;customer_info.account.type&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;customerSince&quot;</span><span class="p">:</span> <span class="s2">&quot;customer_info.account.created&quot;</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div>
+<h2 id="philosophy">Philosophy<a class="headerlink" href="#philosophy" title="Permanent link">&para;</a></h2>
+<p><code>dotpluck</code> represents the Shape pillar's core concept: reshaping data into new forms. While it uses <code>dotget</code> internally, its purpose is fundamentally different - it's about projection and transformation, not just extraction.</p>
+<p>The implementation is pedagogically simple but conceptually powerful:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">pluck</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">shape</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Project data into a new shape.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">pluck</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">shape</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">get</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span>  <span class="c1"># Path to extract</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">shape</span>  <span class="c1"># Static value</span>
+</code></pre></div>
+<p>This recursive structure allows arbitrary reshaping while maintaining simplicity.</p>
+<h2 id="comparison-with-other-tools">Comparison with Other Tools<a class="headerlink" href="#comparison-with-other-tools" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+<th>Philosophy</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dotget</code></td>
+<td>Navigate to single value</td>
+<td>Depth pillar - finding data</td>
+<td>Single value</td>
+</tr>
+<tr>
+<td><code>dotpluck</code></td>
+<td>Reshape/project data</td>
+<td>Shape pillar - transformation</td>
+<td>New structure</td>
+</tr>
+<tr>
+<td><code>dotstar</code></td>
+<td>Search with patterns</td>
+<td>Depth pillar - pattern matching</td>
+<td>List of matches</td>
+</tr>
+<tr>
+<td><code>dotmod</code></td>
+<td>Modify in place</td>
+<td>Shape pillar - surgical edits</td>
+<td>Modified document</td>
+</tr>
+</tbody>
+</table>
+<p>The key distinction: <code>dotget</code> and <code>dotstar</code> are about FINDING data (Depth pillar), while <code>dotpluck</code> and <code>dotmod</code> are about RESHAPING data (Shape pillar).</p>
+<h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../depth/dotget/"><code>dotget</code></a> - Simple single value extraction</li>
+<li><a href="../dotmod/"><code>dotmod</code></a> - Modify documents</li>
+<li><a href="../dotpipe/"><code>dotpipe</code></a> - Transform documents</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../dotpipe/" class="btn btn-neutral float-left" title="dotpipe"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../collections/dotfilter/" class="btn btn-neutral float-right" title="dotfilter">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../dotpipe/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../collections/dotfilter/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
